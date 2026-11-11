@@ -1,0 +1,45 @@
+{
+  "uav": {
+    "name": "ВТ-440",
+    "max_takeoff_mass_kg": 450.0,
+    "payload_kg": 100.0,
+    "flight_time_max_min": 300.0,
+    "range_km": 300.0,
+    "cruise_speed_kmh": 120.0,
+    "ceiling_m": 2300.0
+  },
+  "scenario": {
+    "L0_m": 20000.0,
+    "agl_base_m": 40.0,
+    "detour_speed_factor": 0.7,
+    "obstacles": [
+      {"id": 1, "type": "no_fly",   "x_km": 2.5,  "add_pct": 20.0, "vertical": false},
+      {"id": 2, "type": "standard", "x_km": 5.0,  "add_pct": 5.0,  "vertical": false},
+      {"id": 3, "type": "standard", "x_km": 7.5,  "add_pct": 5.0,  "vertical": false},
+      {"id": 4, "type": "standard", "x_km": 10.0, "add_pct": 5.0,  "vertical": false},
+      {"id": 5, "type": "combined", "x_km": 12.5, "add_pct": 4.0,  "vertical": true},
+      {"id": 6, "type": "combined", "x_km": 15.0, "add_pct": 5.0,  "vertical": true},
+      {"id": 7, "type": "combined", "x_km": 17.5, "add_pct": 6.0,  "vertical": true}
+    ],
+    "maneuver_half_width_m": 750.0
+  },
+  "terrain": {
+    "peak_amplitude_m": 70.0,
+    "center_x_m": 10500.0,
+    "sigma_m": 1900.0
+  },
+  "energy": {
+    "E_total_kwh": 120.0,
+    "P_cruise_kw": 45.0,
+    "P_detour_kw": 40.0,
+    "P_climb_kw": 60.0,
+    "m_empty_kg": 250.0,
+    "m_payload_kg": 100.0,
+    "m_battery_kg": 100.0,
+    "mass_drop_kg": 100.0,
+    "mass_drop_time_min": 60.0
+  },
+  "sampling": {
+    "n_points": 4001
+  }
+}

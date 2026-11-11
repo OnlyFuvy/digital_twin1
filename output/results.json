@@ -1,0 +1,318 @@
+{
+  "uav": {
+    "name": "ВТ-440",
+    "max_takeoff_mass_kg": 450.0,
+    "payload_kg": 100.0,
+    "flight_time_max_min": 300.0,
+    "range_km": 300.0,
+    "cruise_speed_kmh": 120.0,
+    "ceiling_m": 2300.0
+  },
+  "route": {
+    "L0_km": 20.0,
+    "total_length_km": 30.00159971565647,
+    "detour_length_km": 10.00159971565647,
+    "detour_pct": 50.007998578282354,
+    "duration_min": 19.40149979689753,
+    "avg_ground_speed_kmh": 92.78127988987941,
+    "n_points": 4001,
+    "obstacles": [
+      {
+        "id": 1,
+        "type": "no_fly",
+        "x_km": 2.5,
+        "add_pct": 20.0,
+        "amplitude_m": 2645.7513110645905,
+        "target_extra_m": 4000.0
+      },
+      {
+        "id": 2,
+        "type": "standard",
+        "x_km": 5.0,
+        "add_pct": 5.0,
+        "amplitude_m": 999.9999999999998,
+        "target_extra_m": 1000.0
+      },
+      {
+        "id": 3,
+        "type": "standard",
+        "x_km": 7.5,
+        "add_pct": 5.0,
+        "amplitude_m": 999.9999999999998,
+        "target_extra_m": 1000.0
+      },
+      {
+        "id": 4,
+        "type": "standard",
+        "x_km": 10.0,
+        "add_pct": 5.0,
+        "amplitude_m": 999.9999999999998,
+        "target_extra_m": 1000.0
+      },
+      {
+        "id": 5,
+        "type": "combined",
+        "x_km": 12.5,
+        "add_pct": 4.0,
+        "amplitude_m": 871.9021134398552,
+        "target_extra_m": 800.0
+      },
+      {
+        "id": 6,
+        "type": "combined",
+        "x_km": 15.0,
+        "add_pct": 5.0,
+        "amplitude_m": 1000.1333007535084,
+        "target_extra_m": 1000.0
+      },
+      {
+        "id": 7,
+        "type": "combined",
+        "x_km": 17.5,
+        "add_pct": 6.0,
+        "amplitude_m": 1122.6397209841316,
+        "target_extra_m": 1200.0
+      }
+    ]
+  },
+  "energy": {
+    "E_total_kwh": 120.0,
+    "E_consumed_kwh": 14.221755783129375,
+    "soc_final_pct": 88.1485368473922,
+    "mass_nominal_kg": 450.0,
+    "mass_after_drop_kg": 450.0,
+    "mass_drop_kg": 100.0,
+    "mass_drop_time_min": 60.0
+  },
+  "memory": {
+    "duration_min": 19.40149979689753,
+    "useful_mib": 18.21554996495216,
+    "full_mib": 23.680214954437808,
+    "overhead_factor": 1.3,
+    "useful_mib_90min": 84.49859619140625,
+    "full_mib_90min": 109.84817504882812
+  },
+  "sensors": {
+    "total": 24,
+    "active": 11,
+    "stub": 13,
+    "list": [
+      {
+        "id": "IMU1",
+        "type": "IMU",
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "rate_hz": 200,
+        "status": "active"
+      },
+      {
+        "id": "IMU2",
+        "type": "IMU",
+        "x": 0.1,
+        "y": 0.0,
+        "z": 0.0,
+        "rate_hz": 200,
+        "status": "active"
+      },
+      {
+        "id": "GNSS1",
+        "type": "GNSS",
+        "x": 0.15,
+        "y": 0.0,
+        "z": 0.3,
+        "rate_hz": 10,
+        "status": "active"
+      },
+      {
+        "id": "GNSS2",
+        "type": "GNSS",
+        "x": -0.15,
+        "y": 0.0,
+        "z": 0.3,
+        "rate_hz": 10,
+        "status": "active"
+      },
+      {
+        "id": "BARO1",
+        "type": "BARO",
+        "x": 0.05,
+        "y": 0.05,
+        "z": 0.1,
+        "rate_hz": 25,
+        "status": "active"
+      },
+      {
+        "id": "BARO2",
+        "type": "BARO",
+        "x": -0.05,
+        "y": -0.05,
+        "z": 0.1,
+        "rate_hz": 25,
+        "status": "active"
+      },
+      {
+        "id": "MAG1",
+        "type": "MAG",
+        "x": 0.0,
+        "y": 0.2,
+        "z": 0.0,
+        "rate_hz": 50,
+        "status": "active"
+      },
+      {
+        "id": "LIDAR_DOWN",
+        "type": "LIDAR_DOWN",
+        "x": 0.0,
+        "y": 0.0,
+        "z": -0.25,
+        "rate_hz": 20,
+        "status": "active"
+      },
+      {
+        "id": "LIDAR_FRONT",
+        "type": "LIDAR_FRONT",
+        "x": 0.3,
+        "y": 0.0,
+        "z": 0.0,
+        "rate_hz": 20,
+        "status": "active"
+      },
+      {
+        "id": "RPM",
+        "type": "RPM",
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.15,
+        "rate_hz": 50,
+        "status": "active"
+      },
+      {
+        "id": "PWR",
+        "type": "POWER",
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.05,
+        "rate_hz": 10,
+        "status": "active"
+      },
+      {
+        "id": "ADC_BATT",
+        "type": "ADC",
+        "x": 0.02,
+        "y": 0.0,
+        "z": 0.05,
+        "rate_hz": 10,
+        "status": "stub"
+      },
+      {
+        "id": "TEMP_BATT",
+        "type": "TEMP",
+        "x": 0.02,
+        "y": 0.02,
+        "z": 0.05,
+        "rate_hz": 1,
+        "status": "stub"
+      },
+      {
+        "id": "CURRENT_MOTOR",
+        "type": "CURRENT",
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.1,
+        "rate_hz": 50,
+        "status": "stub"
+      },
+      {
+        "id": "VOLTAGE_BUS",
+        "type": "VOLTAGE",
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.08,
+        "rate_hz": 10,
+        "status": "stub"
+      },
+      {
+        "id": "FUEL_FLOW",
+        "type": "FUEL",
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.15,
+        "rate_hz": 10,
+        "status": "stub"
+      },
+      {
+        "id": "SOC_EST",
+        "type": "SOC",
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.05,
+        "rate_hz": 1,
+        "status": "stub"
+      },
+      {
+        "id": "AIRSPEED",
+        "type": "AIRSPEED",
+        "x": 0.4,
+        "y": 0.0,
+        "z": 0.0,
+        "rate_hz": 20,
+        "status": "stub"
+      },
+      {
+        "id": "RADAR_ALT",
+        "type": "RADAR_ALT",
+        "x": 0.0,
+        "y": 0.0,
+        "z": -0.3,
+        "rate_hz": 20,
+        "status": "stub"
+      },
+      {
+        "id": "VIBRO",
+        "type": "VIBRO",
+        "x": 0.05,
+        "y": 0.0,
+        "z": 0.0,
+        "rate_hz": 100,
+        "status": "stub"
+      },
+      {
+        "id": "TEMP_IMU",
+        "type": "TEMP",
+        "x": 0.02,
+        "y": 0.0,
+        "z": 0.0,
+        "rate_hz": 1,
+        "status": "stub"
+      },
+      {
+        "id": "MAG2",
+        "type": "MAG",
+        "x": 0.0,
+        "y": -0.2,
+        "z": 0.0,
+        "rate_hz": 50,
+        "status": "stub"
+      },
+      {
+        "id": "GNSS_VEL",
+        "type": "GNSS_VEL",
+        "x": 0.15,
+        "y": 0.0,
+        "z": 0.3,
+        "rate_hz": 10,
+        "status": "stub"
+      },
+      {
+        "id": "BARO_ALT",
+        "type": "BARO_ALT",
+        "x": 0.05,
+        "y": 0.0,
+        "z": 0.1,
+        "rate_hz": 25,
+        "status": "stub"
+      }
+    ]
+  }
+}

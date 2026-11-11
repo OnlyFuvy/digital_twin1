@@ -1,0 +1,32 @@
+{
+  "reference": "center_of_mass",
+  "units": "m",
+  "sensors": [
+
+    {"id": "IMU1",          "type": "IMU",          "x": 0.00,  "y": 0.00,  "z": 0.00,  "rate_hz": 200, "status": "active"},
+    {"id": "IMU2",          "type": "IMU",          "x": 0.10,  "y": 0.00,  "z": 0.00,  "rate_hz": 200, "status": "active"},
+    {"id": "GNSS1",         "type": "GNSS",         "x": 0.15,  "y": 0.00,  "z": 0.30,  "rate_hz": 10,  "status": "active"},
+    {"id": "GNSS2",         "type": "GNSS",         "x": -0.15, "y": 0.00,  "z": 0.30,  "rate_hz": 10,  "status": "active"},
+    {"id": "BARO1",         "type": "BARO",         "x": 0.05,  "y": 0.05,  "z": 0.10,  "rate_hz": 25,  "status": "active"},
+    {"id": "BARO2",         "type": "BARO",         "x": -0.05, "y": -0.05, "z": 0.10,  "rate_hz": 25,  "status": "active"},
+    {"id": "MAG1",          "type": "MAG",          "x": 0.00,  "y": 0.20,  "z": 0.00,  "rate_hz": 50,  "status": "active"},
+    {"id": "LIDAR_DOWN",    "type": "LIDAR_DOWN",   "x": 0.00,  "y": 0.00,  "z": -0.25, "rate_hz": 20,  "status": "active"},
+    {"id": "LIDAR_FRONT",   "type": "LIDAR_FRONT",  "x": 0.30,  "y": 0.00,  "z": 0.00,  "rate_hz": 20,  "status": "active"},
+    {"id": "RPM",           "type": "RPM",          "x": 0.00,  "y": 0.00,  "z": 0.15,  "rate_hz": 50,  "status": "active"},
+    {"id": "PWR",           "type": "POWER",        "x": 0.00,  "y": 0.00,  "z": 0.05,  "rate_hz": 10,  "status": "active"},
+
+    {"id": "ADC_BATT",      "type": "ADC",          "x": 0.02,  "y": 0.00,  "z": 0.05,  "rate_hz": 10,  "status": "stub"},
+    {"id": "TEMP_BATT",     "type": "TEMP",         "x": 0.02,  "y": 0.02,  "z": 0.05,  "rate_hz": 1,   "status": "stub"},
+    {"id": "CURRENT_MOTOR", "type": "CURRENT",      "x": 0.00,  "y": 0.00,  "z": 0.10,  "rate_hz": 50,  "status": "stub"},
+    {"id": "VOLTAGE_BUS",   "type": "VOLTAGE",      "x": 0.00,  "y": 0.00,  "z": 0.08,  "rate_hz": 10,  "status": "stub"},
+    {"id": "FUEL_FLOW",     "type": "FUEL",         "x": 0.00,  "y": 0.00,  "z": 0.15,  "rate_hz": 10,  "status": "stub"},
+    {"id": "SOC_EST",       "type": "SOC",          "x": 0.00,  "y": 0.00,  "z": 0.05,  "rate_hz": 1,   "status": "stub"},
+    {"id": "AIRSPEED",      "type": "AIRSPEED",     "x": 0.40,  "y": 0.00,  "z": 0.00,  "rate_hz": 20,  "status": "stub"},
+    {"id": "RADAR_ALT",     "type": "RADAR_ALT",    "x": 0.00,  "y": 0.00,  "z": -0.30, "rate_hz": 20,  "status": "stub"},
+    {"id": "VIBRO",         "type": "VIBRO",        "x": 0.05,  "y": 0.00,  "z": 0.00,  "rate_hz": 100, "status": "stub"},
+    {"id": "TEMP_IMU",      "type": "TEMP",         "x": 0.02,  "y": 0.00,  "z": 0.00,  "rate_hz": 1,   "status": "stub"},
+    {"id": "MAG2",          "type": "MAG",          "x": 0.00,  "y": -0.20, "z": 0.00,  "rate_hz": 50,  "status": "stub"},
+    {"id": "GNSS_VEL",      "type": "GNSS_VEL",     "x": 0.15,  "y": 0.00,  "z": 0.30,  "rate_hz": 10,  "status": "stub"},
+    {"id": "BARO_ALT",      "type": "BARO_ALT",     "x": 0.05,  "y": 0.00,  "z": 0.10,  "rate_hz": 25,  "status": "stub"}
+  ]
+}
