@@ -1,0 +1,271 @@
+{
+  "reference": "center_of_mass",
+  "units": "m",
+  "sensors": [
+    {
+      "id": "IMU1",
+      "type": "IMU",
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0,
+      "rate_hz": 200,
+      "status": "simulated",
+      "components": 6,
+      "kind": "physical_model"
+    },
+    {
+      "id": "IMU2",
+      "type": "IMU",
+      "x": 0.1,
+      "y": 0.0,
+      "z": 0.0,
+      "rate_hz": 200,
+      "status": "simulated",
+      "components": 6,
+      "kind": "physical_model"
+    },
+    {
+      "id": "GNSS1",
+      "type": "GNSS",
+      "x": 0.15,
+      "y": 0.0,
+      "z": 0.3,
+      "rate_hz": 20,
+      "status": "simulated",
+      "components": 3,
+      "kind": "physical_model"
+    },
+    {
+      "id": "GNSS2",
+      "type": "GNSS",
+      "x": -0.15,
+      "y": 0.0,
+      "z": 0.3,
+      "rate_hz": 20,
+      "status": "simulated",
+      "components": 3,
+      "kind": "physical_model"
+    },
+    {
+      "id": "BARO1",
+      "type": "BARO",
+      "x": 0.05,
+      "y": 0.05,
+      "z": 0.1,
+      "rate_hz": 25,
+      "status": "simulated",
+      "components": 1,
+      "kind": "physical_model"
+    },
+    {
+      "id": "BARO2",
+      "type": "BARO",
+      "x": -0.05,
+      "y": -0.05,
+      "z": 0.1,
+      "rate_hz": 25,
+      "status": "simulated",
+      "components": 1,
+      "kind": "physical_model"
+    },
+    {
+      "id": "MAG1",
+      "type": "MAG",
+      "x": 0.0,
+      "y": 0.2,
+      "z": 0.0,
+      "rate_hz": 50,
+      "status": "simulated",
+      "components": 3,
+      "kind": "physical_model"
+    },
+    {
+      "id": "LIDAR_DOWN",
+      "type": "LIDAR_DOWN",
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.25,
+      "rate_hz": 50,
+      "status": "simulated",
+      "components": 1,
+      "kind": "physical_model"
+    },
+    {
+      "id": "LIDAR_FRONT",
+      "type": "LIDAR_FRONT",
+      "x": 0.3,
+      "y": 0.0,
+      "z": 0.0,
+      "rate_hz": 50,
+      "status": "simulated",
+      "components": 1,
+      "kind": "physical_model"
+    },
+    {
+      "id": "RPM",
+      "type": "RPM",
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.15,
+      "rate_hz": 50,
+      "status": "simulated",
+      "components": 1,
+      "kind": "physical_model"
+    },
+    {
+      "id": "PWR",
+      "type": "POWER",
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.05,
+      "rate_hz": 10,
+      "status": "simulated",
+      "components": 3,
+      "kind": "physical_model"
+    },
+    {
+      "id": "ADC_BATT",
+      "type": "ADC",
+      "x": 0.02,
+      "y": 0.0,
+      "z": 0.05,
+      "rate_hz": 10,
+      "status": "simulated",
+      "components": 1,
+      "kind": "physical_model"
+    },
+    {
+      "id": "TEMP_BATT",
+      "type": "TEMP",
+      "x": 0.02,
+      "y": 0.02,
+      "z": 0.05,
+      "rate_hz": 1,
+      "status": "simulated",
+      "components": 1,
+      "kind": "physical_model"
+    },
+    {
+      "id": "CURRENT_MOTOR",
+      "type": "CURRENT",
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.1,
+      "rate_hz": 50,
+      "status": "simulated",
+      "components": 1,
+      "kind": "physical_model"
+    },
+    {
+      "id": "VOLTAGE_BUS",
+      "type": "VOLTAGE",
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.08,
+      "rate_hz": 10,
+      "status": "simulated",
+      "components": 1,
+      "kind": "physical_model"
+    },
+    {
+      "id": "FUEL_FLOW",
+      "type": "FUEL",
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.15,
+      "rate_hz": 10,
+      "status": "simulated",
+      "components": 1,
+      "kind": "physical_model"
+    },
+    {
+      "id": "SOC_EST",
+      "type": "SOC",
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.05,
+      "rate_hz": 1,
+      "status": "simulated",
+      "components": 1,
+      "kind": "derived"
+    },
+    {
+      "id": "AIRSPEED",
+      "type": "AIRSPEED",
+      "x": 0.4,
+      "y": 0.0,
+      "z": 0.0,
+      "rate_hz": 20,
+      "status": "simulated",
+      "components": 1,
+      "kind": "physical_model"
+    },
+    {
+      "id": "RADAR_ALT",
+      "type": "RADAR_ALT",
+      "x": 0.0,
+      "y": 0.0,
+      "z": -0.3,
+      "rate_hz": 50,
+      "status": "simulated",
+      "components": 1,
+      "kind": "physical_model"
+    },
+    {
+      "id": "VIBRO",
+      "type": "VIBRO",
+      "x": 0.05,
+      "y": 0.0,
+      "z": 0.0,
+      "rate_hz": 100,
+      "status": "simulated",
+      "components": 1,
+      "kind": "physical_model"
+    },
+    {
+      "id": "TEMP_IMU",
+      "type": "TEMP",
+      "x": 0.02,
+      "y": 0.0,
+      "z": 0.0,
+      "rate_hz": 1,
+      "status": "simulated",
+      "components": 1,
+      "kind": "physical_model"
+    },
+    {
+      "id": "MAG2",
+      "type": "MAG",
+      "x": 0.0,
+      "y": -0.2,
+      "z": 0.0,
+      "rate_hz": 50,
+      "status": "simulated",
+      "components": 3,
+      "kind": "physical_model"
+    },
+    {
+      "id": "GNSS_VEL",
+      "type": "GNSS_VEL",
+      "x": 0.15,
+      "y": 0.0,
+      "z": 0.3,
+      "rate_hz": 20,
+      "status": "simulated",
+      "components": 3,
+      "kind": "derived"
+    },
+    {
+      "id": "BARO_ALT",
+      "type": "BARO_ALT",
+      "x": 0.05,
+      "y": 0.05,
+      "z": 0.1,
+      "rate_hz": 25,
+      "status": "simulated",
+      "components": 1,
+      "kind": "derived"
+    }
+  ],
+  "axes": "Body FLU: X forward, Y left, Z up. World ENU: X east, Y north, Z up."
+}

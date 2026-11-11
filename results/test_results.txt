@@ -1,0 +1,30 @@
+test_timeline_and_channel_callbacks (test_gui.GuiTests.test_timeline_and_channel_callbacks) ... ok
+test_constant_velocity_without_gnss (test_navigation.NavigationTests.test_constant_velocity_without_gnss) ... ok
+test_noise_is_reproducible (test_navigation.NavigationTests.test_noise_is_reproducible) ... ok
+test_sensor_rates_scale_with_speed (test_navigation.NavigationTests.test_sensor_rates_scale_with_speed) ... ok
+test_stationary_zero_noise_does_not_drift (test_navigation.NavigationTests.test_stationary_zero_noise_does_not_drift) ... ok
+test_all_channels_dimensions_and_schedules (test_project.MissionTests.test_all_channels_dimensions_and_schedules) ... ok
+test_binary_roundtrip_and_truncation (test_project.MissionTests.test_binary_roundtrip_and_truncation) ... ok
+test_bridge_rejects_insufficient_opening (test_project.MissionTests.test_bridge_rejects_insufficient_opening) ... ok
+test_collision_and_canopy (test_project.MissionTests.test_collision_and_canopy) ... ok
+test_config_validation (test_project.MissionTests.test_config_validation) ... ok
+test_derived_baro_uses_primary_measurement (test_project.MissionTests.test_derived_baro_uses_primary_measurement) ... ok
+test_dynamic_limits (test_project.MissionTests.test_dynamic_limits) ... ok
+test_exact_memory_includes_redundancy_and_state (test_project.MissionTests.test_exact_memory_includes_redundancy_and_state) ... ok
+test_fuel_energy_conservation (test_project.MissionTests.test_fuel_energy_conservation) ... ok
+test_gnss_failure_is_flagged_not_faked (test_project.MissionTests.test_gnss_failure_is_flagged_not_faked) ... ok
+test_imu_redundancy_not_identical (test_project.MissionTests.test_imu_redundancy_not_identical) ... ok
+test_low_fuel_rejected (test_project.MissionTests.test_low_fuel_rejected) ... ok
+test_mass_changes_only_with_fuel (test_project.MissionTests.test_mass_changes_only_with_fuel) ... ok
+test_overweight_rejected (test_project.MissionTests.test_overweight_rejected) ... ok
+test_power_limit_violation_detected (test_project.MissionTests.test_power_limit_violation_detected) ... ok
+test_resolution_convergence (test_project.MissionTests.test_resolution_convergence) ... ok
+test_rotations_are_proper (test_project.MissionTests.test_rotations_are_proper) ... ok
+test_seven_detour_lengths (test_project.MissionTests.test_seven_detour_lengths) ... ok
+test_trajectory_geometry_uses_absolute_altitude (test_project.MissionTests.test_trajectory_geometry_uses_absolute_altitude) ... ok
+test_vertical_half_current_height (test_project.MissionTests.test_vertical_half_current_height) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 7.159s
+
+OK

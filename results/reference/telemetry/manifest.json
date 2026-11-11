@@ -1,0 +1,343 @@
+{
+  "format": "little endian: float64 t, uint16 channel, uint16 components, uint32 quality, float32 values[N]",
+  "streams": [
+    {
+      "id": "IMU1",
+      "channel": 1,
+      "components": 6,
+      "rate_hz": 200,
+      "samples": 267034,
+      "bytes": 10681360,
+      "units": [
+        "m/s2",
+        "m/s2",
+        "m/s2",
+        "rad/s",
+        "rad/s",
+        "rad/s"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "IMU2",
+      "channel": 2,
+      "components": 6,
+      "rate_hz": 200,
+      "samples": 267034,
+      "bytes": 10681360,
+      "units": [
+        "m/s2",
+        "m/s2",
+        "m/s2",
+        "rad/s",
+        "rad/s",
+        "rad/s"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "GNSS1",
+      "channel": 3,
+      "components": 3,
+      "rate_hz": 20,
+      "samples": 26704,
+      "bytes": 747712,
+      "units": [
+        "m",
+        "m",
+        "m"
+      ],
+      "invalid_samples": 1200
+    },
+    {
+      "id": "GNSS2",
+      "channel": 4,
+      "components": 3,
+      "rate_hz": 20,
+      "samples": 26704,
+      "bytes": 747712,
+      "units": [
+        "m",
+        "m",
+        "m"
+      ],
+      "invalid_samples": 1200
+    },
+    {
+      "id": "BARO1",
+      "channel": 5,
+      "components": 1,
+      "rate_hz": 25,
+      "samples": 33380,
+      "bytes": 667600,
+      "units": [
+        "Pa"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "BARO2",
+      "channel": 6,
+      "components": 1,
+      "rate_hz": 25,
+      "samples": 33380,
+      "bytes": 667600,
+      "units": [
+        "Pa"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "MAG1",
+      "channel": 7,
+      "components": 3,
+      "rate_hz": 50,
+      "samples": 66759,
+      "bytes": 1869252,
+      "units": [
+        "uT",
+        "uT",
+        "uT"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "LIDAR_DOWN",
+      "channel": 8,
+      "components": 1,
+      "rate_hz": 50,
+      "samples": 66759,
+      "bytes": 1335180,
+      "units": [
+        "m"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "LIDAR_FRONT",
+      "channel": 9,
+      "components": 1,
+      "rate_hz": 50,
+      "samples": 66759,
+      "bytes": 1335180,
+      "units": [
+        "m"
+      ],
+      "invalid_samples": 66759
+    },
+    {
+      "id": "RPM",
+      "channel": 10,
+      "components": 1,
+      "rate_hz": 50,
+      "samples": 66759,
+      "bytes": 1335180,
+      "units": [
+        "rpm"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "PWR",
+      "channel": 11,
+      "components": 3,
+      "rate_hz": 10,
+      "samples": 13352,
+      "bytes": 373856,
+      "units": [
+        "W",
+        "V",
+        "A"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "ADC_BATT",
+      "channel": 12,
+      "components": 1,
+      "rate_hz": 10,
+      "samples": 13352,
+      "bytes": 267040,
+      "units": [
+        "count"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "TEMP_BATT",
+      "channel": 13,
+      "components": 1,
+      "rate_hz": 1,
+      "samples": 1336,
+      "bytes": 26720,
+      "units": [
+        "degC"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "CURRENT_MOTOR",
+      "channel": 14,
+      "components": 1,
+      "rate_hz": 50,
+      "samples": 66759,
+      "bytes": 1335180,
+      "units": [
+        "A"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "VOLTAGE_BUS",
+      "channel": 15,
+      "components": 1,
+      "rate_hz": 10,
+      "samples": 13352,
+      "bytes": 267040,
+      "units": [
+        "V"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "FUEL_FLOW",
+      "channel": 16,
+      "components": 1,
+      "rate_hz": 10,
+      "samples": 13352,
+      "bytes": 267040,
+      "units": [
+        "kg/s"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "SOC_EST",
+      "channel": 17,
+      "components": 1,
+      "rate_hz": 1,
+      "samples": 1336,
+      "bytes": 26720,
+      "units": [
+        "fraction"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "AIRSPEED",
+      "channel": 18,
+      "components": 1,
+      "rate_hz": 20,
+      "samples": 26704,
+      "bytes": 534080,
+      "units": [
+        "m/s"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "RADAR_ALT",
+      "channel": 19,
+      "components": 1,
+      "rate_hz": 50,
+      "samples": 66759,
+      "bytes": 1335180,
+      "units": [
+        "m"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "VIBRO",
+      "channel": 20,
+      "components": 1,
+      "rate_hz": 100,
+      "samples": 133517,
+      "bytes": 2670340,
+      "units": [
+        "g_rms"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "TEMP_IMU",
+      "channel": 21,
+      "components": 1,
+      "rate_hz": 1,
+      "samples": 1336,
+      "bytes": 26720,
+      "units": [
+        "degC"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "MAG2",
+      "channel": 22,
+      "components": 3,
+      "rate_hz": 50,
+      "samples": 66759,
+      "bytes": 1869252,
+      "units": [
+        "uT",
+        "uT",
+        "uT"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "GNSS_VEL",
+      "channel": 23,
+      "components": 3,
+      "rate_hz": 20,
+      "samples": 26704,
+      "bytes": 747712,
+      "units": [
+        "m/s",
+        "m/s",
+        "m/s"
+      ],
+      "invalid_samples": 1202
+    },
+    {
+      "id": "BARO_ALT",
+      "channel": 24,
+      "components": 1,
+      "rate_hz": 25,
+      "samples": 33380,
+      "bytes": 667600,
+      "units": [
+        "m"
+      ],
+      "invalid_samples": 0
+    },
+    {
+      "id": "STATE",
+      "channel": 25,
+      "components": 16,
+      "rate_hz": 20.0,
+      "samples": 26704,
+      "bytes": 2136320,
+      "units": [
+        "m",
+        "m",
+        "m",
+        "m/s",
+        "m/s",
+        "m/s",
+        "rad",
+        "rad",
+        "rad",
+        "kg",
+        "kW",
+        "fraction",
+        "m",
+        "kg",
+        "m/s",
+        "m/s"
+      ],
+      "invalid_samples": 0
+    }
+  ],
+  "total_bytes": 42618936
+}

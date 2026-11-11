@@ -1,0 +1,42 @@
+[
+  {
+    "scenario": "nominal",
+    "duration_s": 1455.168414626473,
+    "fuel_final_kg": 55.04509800024792,
+    "peak_power_kw": 51.29337817112361,
+    "passed": true,
+    "failed_checks": "",
+    "navigation_rmse_m": 0.5660268300134698,
+    "outage_peak_m": 0.0
+  },
+  {
+    "scenario": "gnss_dropout",
+    "duration_s": 1455.168414626473,
+    "fuel_final_kg": 55.04509800024792,
+    "peak_power_kw": 51.29337817112361,
+    "passed": true,
+    "failed_checks": "",
+    "navigation_rmse_m": 3.5971429075254884,
+    "outage_peak_m": 33.543259365105484
+  },
+  {
+    "scenario": "low_fuel",
+    "duration_s": 1455.168414626473,
+    "fuel_final_kg": -3.4014014922244376,
+    "peak_power_kw": 48.010660461031094,
+    "passed": false,
+    "failed_checks": "fuel_reserve_3_percent",
+    "navigation_rmse_m": "",
+    "outage_peak_m": ""
+  },
+  {
+    "scenario": "strong_wind",
+    "duration_s": 1455.168414626473,
+    "fuel_final_kg": 50.45091718576647,
+    "peak_power_kw": 155.6793928276146,
+    "passed": false,
+    "failed_checks": "engine_power",
+    "navigation_rmse_m": "",
+    "outage_peak_m": ""
+  }
+]

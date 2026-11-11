@@ -1,0 +1,102 @@
+{
+  "name": "ВТ-440 учебная конфигурация из задания",
+  "seed": 42,
+  "route": {
+    "baseline_m": 20000.0,
+    "agl_m": 60.0,
+    "half_width_m": 850.0,
+    "spatial_step_m": 2.0,
+    "extra_percent": [
+      20,
+      4,
+      4,
+      4,
+      4,
+      5,
+      6
+    ],
+    "types": [
+      "no_fly",
+      "over",
+      "over",
+      "over",
+      "bridge",
+      "lateral",
+      "lateral"
+    ],
+    "sides": [
+      1,
+      -1,
+      1,
+      -1,
+      1,
+      -1,
+      1
+    ]
+  },
+  "vehicle": {
+    "empty_mass_kg": 260.0,
+    "payload_kg": 100.0,
+    "battery_mass_kg": 8.0,
+    "fuel_kg": 60.0,
+    "max_mass_kg": 450.0,
+    "cruise_ms": 33.333333333333336,
+    "max_climb_ms": 3.0,
+    "max_accel_ms2": 1.0,
+    "max_bank_deg": 25.0,
+    "rotor_radius_m": 3.5,
+    "body_half_height_m": 1.2,
+    "max_power_kw": 85.0,
+    "ceiling_m": 2300.0
+  },
+  "environment": {
+    "temperature_c": -20.0,
+    "wind_ms": [
+      4.0,
+      -2.0,
+      0.0
+    ],
+    "min_canopy_clearance_m": 25.0,
+    "nfz_radius_m": 300.0,
+    "obstacle_radius_m": 130.0,
+    "obstacle_height_m": 70.0,
+    "bridge_bottom_agl_m": 85.0,
+    "bridge_opening_width_m": 100.0,
+    "bridge_half_thickness_m": 8.0
+  },
+  "energy": {
+    "reserve_fraction": 0.03,
+    "bsfc_kg_kwh": 0.32,
+    "profile_power_kw": 10.0,
+    "drag_area_m2": 1.2,
+    "transmission_efficiency": 0.88,
+    "battery_wh": 1120.0,
+    "initial_soc": 0.9,
+    "hotel_power_w": 350.0,
+    "generator_w": 300.0
+  },
+  "sensors": {
+    "imu_hz": 200,
+    "sigma_accel_ms2": 0.02,
+    "bias_accel_ms2": [
+      0.006,
+      -0.004,
+      0.008
+    ],
+    "sigma_gyro_rads": 0.0001,
+    "bias_gyro_rads": [
+      2e-06,
+      -2e-06,
+      3e-06
+    ],
+    "gnss_sigma_m": 1.2,
+    "dropout_start_s": 300.0,
+    "dropout_end_s": 360.0
+  },
+  "telemetry": {
+    "state_hz": 20.0,
+    "state_components": 16,
+    "header_bytes": 16,
+    "storage_margin": 1.3
+  }
+}

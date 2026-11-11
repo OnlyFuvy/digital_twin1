@@ -1,0 +1,20 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+results/run/
+results/*/telemetry/*.bin
+*.blend1
+*.blend
+docs/rendered/
+
+# Only reference traces and comparison summaries are versioned.
+results/nominal/figures/
+results/low_fuel/figures/
+results/strong_wind/figures/
+results/nominal/*.csv
+results/low_fuel/*.csv
+results/strong_wind/*.csv

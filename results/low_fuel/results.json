@@ -1,0 +1,1338 @@
+{
+  "configuration": {
+    "name": "ВТ-440 учебная конфигурация из задания",
+    "seed": 42,
+    "route": {
+      "baseline_m": 20000.0,
+      "agl_m": 60.0,
+      "half_width_m": 850.0,
+      "spatial_step_m": 2.0,
+      "extra_percent": [
+        20,
+        4,
+        4,
+        4,
+        4,
+        5,
+        6
+      ],
+      "types": [
+        "no_fly",
+        "over",
+        "over",
+        "over",
+        "bridge",
+        "lateral",
+        "lateral"
+      ],
+      "sides": [
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1
+      ]
+    },
+    "vehicle": {
+      "empty_mass_kg": 260.0,
+      "payload_kg": 100.0,
+      "battery_mass_kg": 8.0,
+      "fuel_kg": 1.0,
+      "max_mass_kg": 450.0,
+      "cruise_ms": 33.333333333333336,
+      "max_climb_ms": 3.0,
+      "max_accel_ms2": 1.0,
+      "max_bank_deg": 25.0,
+      "rotor_radius_m": 3.5,
+      "body_half_height_m": 1.2,
+      "max_power_kw": 85.0,
+      "ceiling_m": 2300.0
+    },
+    "environment": {
+      "temperature_c": -20.0,
+      "wind_ms": [
+        4.0,
+        -2.0,
+        0.0
+      ],
+      "min_canopy_clearance_m": 25.0,
+      "nfz_radius_m": 300.0,
+      "obstacle_radius_m": 130.0,
+      "obstacle_height_m": 70.0,
+      "bridge_bottom_agl_m": 85.0,
+      "bridge_opening_width_m": 100.0,
+      "bridge_half_thickness_m": 8.0
+    },
+    "energy": {
+      "reserve_fraction": 0.03,
+      "bsfc_kg_kwh": 0.32,
+      "profile_power_kw": 10.0,
+      "drag_area_m2": 1.2,
+      "transmission_efficiency": 0.88,
+      "battery_wh": 1120.0,
+      "initial_soc": 0.9,
+      "hotel_power_w": 350.0,
+      "generator_w": 300.0
+    },
+    "sensors": {
+      "imu_hz": 200,
+      "sigma_accel_ms2": 0.02,
+      "bias_accel_ms2": [
+        0.006,
+        -0.004,
+        0.008
+      ],
+      "sigma_gyro_rads": 0.0001,
+      "bias_gyro_rads": [
+        2e-06,
+        -2e-06,
+        3e-06
+      ],
+      "gnss_sigma_m": 1.2,
+      "dropout_start_s": 300.0,
+      "dropout_end_s": 360.0
+    },
+    "telemetry": {
+      "state_hz": 20.0,
+      "state_components": 16,
+      "header_bytes": 16,
+      "storage_margin": 1.3
+    }
+  },
+  "scope": "prescribed airborne trajectory plus 120 s energy allowance for departure and landing",
+  "route": {
+    "baseline_horizontal_m": 20000.0,
+    "baseline_3d_m": 20001.784651860882,
+    "total_3d_m": 29401.784651860893,
+    "extra_m": 9400.000000000011,
+    "extra_percent": 47.00000000000005,
+    "airborne_duration_s": 1335.168414626473,
+    "max_bank_deg": 24.73648704796615,
+    "max_climb_ms": 1.1573036314831597,
+    "min_canopy_clearance_m": 36.8,
+    "obstacles": [
+      {
+        "id": 1,
+        "type": "no_fly",
+        "x_m": 2500.0,
+        "y_m": 0.0,
+        "half_width_m": 850.0,
+        "side": 1,
+        "amplitude_m": 2568.913566292662,
+        "target_percent": 20,
+        "baseline_length_m": 1700.0057849460077,
+        "length_m": 5700.005784946007,
+        "extra_m": 3999.9999999999995,
+        "actual_percent": 20.0,
+        "radius_m": 300.0,
+        "height_m": 70.0,
+        "peak_agl_m": 60.0
+      },
+      {
+        "id": 2,
+        "type": "over",
+        "x_m": 5000.0,
+        "y_m": -794.4566094957488,
+        "half_width_m": 850.0,
+        "side": -1,
+        "amplitude_m": 794.4566094957488,
+        "target_percent": 4,
+        "baseline_length_m": 1700.0535985374474,
+        "length_m": 2500.053598537447,
+        "extra_m": 799.9999999999998,
+        "actual_percent": 3.9999999999999987,
+        "radius_m": 130.0,
+        "height_m": 70.0,
+        "peak_agl_m": 90.0
+      },
+      {
+        "id": 3,
+        "type": "over",
+        "x_m": 7500.0,
+        "y_m": 794.6103726956196,
+        "half_width_m": 850.0,
+        "side": 1,
+        "amplitude_m": 794.6103726956196,
+        "target_percent": 4,
+        "baseline_length_m": 1700.184992396542,
+        "length_m": 2500.184992396542,
+        "extra_m": 800.0,
+        "actual_percent": 4.0,
+        "radius_m": 130.0,
+        "height_m": 70.0,
+        "peak_agl_m": 90.0
+      },
+      {
+        "id": 4,
+        "type": "over",
+        "x_m": 10000.0,
+        "y_m": -794.3983795838753,
+        "half_width_m": 850.0,
+        "side": -1,
+        "amplitude_m": 794.3983795838753,
+        "target_percent": 4,
+        "baseline_length_m": 1700.4043090129858,
+        "length_m": 2500.404309012986,
+        "extra_m": 800.0,
+        "actual_percent": 4.0,
+        "radius_m": 130.0,
+        "height_m": 70.0,
+        "peak_agl_m": 90.0
+      },
+      {
+        "id": 5,
+        "type": "bridge",
+        "x_m": 12500.0,
+        "y_m": 795.0554460605317,
+        "half_width_m": 850.0,
+        "side": 1,
+        "amplitude_m": 795.0554460605317,
+        "target_percent": 4,
+        "baseline_length_m": 1700.3871528035543,
+        "length_m": 2500.3871528035543,
+        "extra_m": 800.0,
+        "actual_percent": 4.0,
+        "radius_m": 130.0,
+        "height_m": 70.0,
+        "peak_agl_m": 60.0
+      },
+      {
+        "id": 6,
+        "type": "lateral",
+        "x_m": 15000.0,
+        "y_m": 0.0,
+        "half_width_m": 850.0,
+        "side": -1,
+        "amplitude_m": 920.1242227780776,
+        "target_percent": 5,
+        "baseline_length_m": 1700.0979500953058,
+        "length_m": 2700.097950095306,
+        "extra_m": 1000.0,
+        "actual_percent": 5.0,
+        "radius_m": 130.0,
+        "height_m": 70.0,
+        "peak_agl_m": 60.0
+      },
+      {
+        "id": 7,
+        "type": "lateral",
+        "x_m": 17500.0,
+        "y_m": 0.0,
+        "half_width_m": 850.0,
+        "side": 1,
+        "amplitude_m": 1040.6377027514727,
+        "target_percent": 6,
+        "baseline_length_m": 1700.006045319416,
+        "length_m": 2900.0060453194164,
+        "extra_m": 1200.0000000000005,
+        "actual_percent": 6.000000000000003,
+        "radius_m": 130.0,
+        "height_m": 70.0,
+        "peak_agl_m": 60.0
+      }
+    ],
+    "collision_checks": [
+      {
+        "id": 1,
+        "type": "no_fly",
+        "passed": true,
+        "clearance_m": 280.22665748740883
+      },
+      {
+        "id": 2,
+        "type": "over",
+        "passed": true,
+        "clearance_m": 15.335050058372275
+      },
+      {
+        "id": 3,
+        "type": "over",
+        "passed": true,
+        "clearance_m": 15.177788216837882
+      },
+      {
+        "id": 4,
+        "type": "over",
+        "passed": true,
+        "clearance_m": 14.33684537131009
+      },
+      {
+        "id": 5,
+        "type": "bridge",
+        "passed": true,
+        "clearance_m": 23.603436374744366
+      },
+      {
+        "id": 6,
+        "type": "lateral",
+        "passed": true,
+        "clearance_m": 349.54224288091416
+      },
+      {
+        "id": 7,
+        "type": "lateral",
+        "passed": true,
+        "clearance_m": 363.9213431842033
+      }
+    ]
+  },
+  "energy": {
+    "initial_fuel_kg": 1.0,
+    "final_fuel_kg": -3.4014014922244376,
+    "final_fuel_percent": -340.14014922244377,
+    "reserve_kg": 0.03,
+    "reserve_passed": false,
+    "fuel_consumed_kg": 4.401401492224437,
+    "shaft_energy_kwh": 13.754235166939534,
+    "peak_power_kw": 48.010660461031094,
+    "hover_power_kw": 39.053754529002205,
+    "max_power_kw": 85.0,
+    "power_passed": true,
+    "phase_allowance_s": 120.0,
+    "phase_allowance_fuel_kg": 0.4165733816426902,
+    "final_soc": 0.8819547567630646,
+    "initial_mass_kg": 369.0,
+    "final_mass_kg": 364.59859850777553,
+    "total_duration_s": 1455.168414626473,
+    "model": "quasi-steady momentum inspired, uncalibrated"
+  },
+  "memory": {
+    "streams": [
+      {
+        "id": "IMU1",
+        "rate_hz": 200,
+        "components": 6,
+        "payload_bytes": 24,
+        "packet_bytes": 40,
+        "sample_count": 267034,
+        "total_bytes": 10681360,
+        "bytes_per_second": 8000
+      },
+      {
+        "id": "IMU2",
+        "rate_hz": 200,
+        "components": 6,
+        "payload_bytes": 24,
+        "packet_bytes": 40,
+        "sample_count": 267034,
+        "total_bytes": 10681360,
+        "bytes_per_second": 8000
+      },
+      {
+        "id": "GNSS1",
+        "rate_hz": 20,
+        "components": 3,
+        "payload_bytes": 12,
+        "packet_bytes": 28,
+        "sample_count": 26704,
+        "total_bytes": 747712,
+        "bytes_per_second": 560
+      },
+      {
+        "id": "GNSS2",
+        "rate_hz": 20,
+        "components": 3,
+        "payload_bytes": 12,
+        "packet_bytes": 28,
+        "sample_count": 26704,
+        "total_bytes": 747712,
+        "bytes_per_second": 560
+      },
+      {
+        "id": "BARO1",
+        "rate_hz": 25,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 33380,
+        "total_bytes": 667600,
+        "bytes_per_second": 500
+      },
+      {
+        "id": "BARO2",
+        "rate_hz": 25,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 33380,
+        "total_bytes": 667600,
+        "bytes_per_second": 500
+      },
+      {
+        "id": "MAG1",
+        "rate_hz": 50,
+        "components": 3,
+        "payload_bytes": 12,
+        "packet_bytes": 28,
+        "sample_count": 66759,
+        "total_bytes": 1869252,
+        "bytes_per_second": 1400
+      },
+      {
+        "id": "LIDAR_DOWN",
+        "rate_hz": 50,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 66759,
+        "total_bytes": 1335180,
+        "bytes_per_second": 1000
+      },
+      {
+        "id": "LIDAR_FRONT",
+        "rate_hz": 50,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 66759,
+        "total_bytes": 1335180,
+        "bytes_per_second": 1000
+      },
+      {
+        "id": "RPM",
+        "rate_hz": 50,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 66759,
+        "total_bytes": 1335180,
+        "bytes_per_second": 1000
+      },
+      {
+        "id": "PWR",
+        "rate_hz": 10,
+        "components": 3,
+        "payload_bytes": 12,
+        "packet_bytes": 28,
+        "sample_count": 13352,
+        "total_bytes": 373856,
+        "bytes_per_second": 280
+      },
+      {
+        "id": "ADC_BATT",
+        "rate_hz": 10,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 13352,
+        "total_bytes": 267040,
+        "bytes_per_second": 200
+      },
+      {
+        "id": "TEMP_BATT",
+        "rate_hz": 1,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 1336,
+        "total_bytes": 26720,
+        "bytes_per_second": 20
+      },
+      {
+        "id": "CURRENT_MOTOR",
+        "rate_hz": 50,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 66759,
+        "total_bytes": 1335180,
+        "bytes_per_second": 1000
+      },
+      {
+        "id": "VOLTAGE_BUS",
+        "rate_hz": 10,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 13352,
+        "total_bytes": 267040,
+        "bytes_per_second": 200
+      },
+      {
+        "id": "FUEL_FLOW",
+        "rate_hz": 10,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 13352,
+        "total_bytes": 267040,
+        "bytes_per_second": 200
+      },
+      {
+        "id": "SOC_EST",
+        "rate_hz": 1,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 1336,
+        "total_bytes": 26720,
+        "bytes_per_second": 20
+      },
+      {
+        "id": "AIRSPEED",
+        "rate_hz": 20,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 26704,
+        "total_bytes": 534080,
+        "bytes_per_second": 400
+      },
+      {
+        "id": "RADAR_ALT",
+        "rate_hz": 50,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 66759,
+        "total_bytes": 1335180,
+        "bytes_per_second": 1000
+      },
+      {
+        "id": "VIBRO",
+        "rate_hz": 100,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 133517,
+        "total_bytes": 2670340,
+        "bytes_per_second": 2000
+      },
+      {
+        "id": "TEMP_IMU",
+        "rate_hz": 1,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 1336,
+        "total_bytes": 26720,
+        "bytes_per_second": 20
+      },
+      {
+        "id": "MAG2",
+        "rate_hz": 50,
+        "components": 3,
+        "payload_bytes": 12,
+        "packet_bytes": 28,
+        "sample_count": 66759,
+        "total_bytes": 1869252,
+        "bytes_per_second": 1400
+      },
+      {
+        "id": "GNSS_VEL",
+        "rate_hz": 20,
+        "components": 3,
+        "payload_bytes": 12,
+        "packet_bytes": 28,
+        "sample_count": 26704,
+        "total_bytes": 747712,
+        "bytes_per_second": 560
+      },
+      {
+        "id": "BARO_ALT",
+        "rate_hz": 25,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 33380,
+        "total_bytes": 667600,
+        "bytes_per_second": 500
+      },
+      {
+        "id": "STATE",
+        "rate_hz": 20.0,
+        "components": 16,
+        "payload_bytes": 64,
+        "packet_bytes": 80,
+        "sample_count": 26704,
+        "total_bytes": 2136320,
+        "bytes_per_second": 1600.0
+      }
+    ],
+    "bytes_per_second": 31920.0,
+    "binary_bytes": 42618936,
+    "binary_mib": 40.64458465576172,
+    "reserved_mib": 52.83796005249024,
+    "margin": 1.3,
+    "duration_s": 1335.168414626473
+  },
+  "memory_90_min": {
+    "streams": [
+      {
+        "id": "IMU1",
+        "rate_hz": 200,
+        "components": 6,
+        "payload_bytes": 24,
+        "packet_bytes": 40,
+        "sample_count": 1080001,
+        "total_bytes": 43200040,
+        "bytes_per_second": 8000
+      },
+      {
+        "id": "IMU2",
+        "rate_hz": 200,
+        "components": 6,
+        "payload_bytes": 24,
+        "packet_bytes": 40,
+        "sample_count": 1080001,
+        "total_bytes": 43200040,
+        "bytes_per_second": 8000
+      },
+      {
+        "id": "GNSS1",
+        "rate_hz": 20,
+        "components": 3,
+        "payload_bytes": 12,
+        "packet_bytes": 28,
+        "sample_count": 108001,
+        "total_bytes": 3024028,
+        "bytes_per_second": 560
+      },
+      {
+        "id": "GNSS2",
+        "rate_hz": 20,
+        "components": 3,
+        "payload_bytes": 12,
+        "packet_bytes": 28,
+        "sample_count": 108001,
+        "total_bytes": 3024028,
+        "bytes_per_second": 560
+      },
+      {
+        "id": "BARO1",
+        "rate_hz": 25,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 135001,
+        "total_bytes": 2700020,
+        "bytes_per_second": 500
+      },
+      {
+        "id": "BARO2",
+        "rate_hz": 25,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 135001,
+        "total_bytes": 2700020,
+        "bytes_per_second": 500
+      },
+      {
+        "id": "MAG1",
+        "rate_hz": 50,
+        "components": 3,
+        "payload_bytes": 12,
+        "packet_bytes": 28,
+        "sample_count": 270001,
+        "total_bytes": 7560028,
+        "bytes_per_second": 1400
+      },
+      {
+        "id": "LIDAR_DOWN",
+        "rate_hz": 50,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 270001,
+        "total_bytes": 5400020,
+        "bytes_per_second": 1000
+      },
+      {
+        "id": "LIDAR_FRONT",
+        "rate_hz": 50,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 270001,
+        "total_bytes": 5400020,
+        "bytes_per_second": 1000
+      },
+      {
+        "id": "RPM",
+        "rate_hz": 50,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 270001,
+        "total_bytes": 5400020,
+        "bytes_per_second": 1000
+      },
+      {
+        "id": "PWR",
+        "rate_hz": 10,
+        "components": 3,
+        "payload_bytes": 12,
+        "packet_bytes": 28,
+        "sample_count": 54001,
+        "total_bytes": 1512028,
+        "bytes_per_second": 280
+      },
+      {
+        "id": "ADC_BATT",
+        "rate_hz": 10,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 54001,
+        "total_bytes": 1080020,
+        "bytes_per_second": 200
+      },
+      {
+        "id": "TEMP_BATT",
+        "rate_hz": 1,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 5401,
+        "total_bytes": 108020,
+        "bytes_per_second": 20
+      },
+      {
+        "id": "CURRENT_MOTOR",
+        "rate_hz": 50,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 270001,
+        "total_bytes": 5400020,
+        "bytes_per_second": 1000
+      },
+      {
+        "id": "VOLTAGE_BUS",
+        "rate_hz": 10,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 54001,
+        "total_bytes": 1080020,
+        "bytes_per_second": 200
+      },
+      {
+        "id": "FUEL_FLOW",
+        "rate_hz": 10,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 54001,
+        "total_bytes": 1080020,
+        "bytes_per_second": 200
+      },
+      {
+        "id": "SOC_EST",
+        "rate_hz": 1,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 5401,
+        "total_bytes": 108020,
+        "bytes_per_second": 20
+      },
+      {
+        "id": "AIRSPEED",
+        "rate_hz": 20,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 108001,
+        "total_bytes": 2160020,
+        "bytes_per_second": 400
+      },
+      {
+        "id": "RADAR_ALT",
+        "rate_hz": 50,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 270001,
+        "total_bytes": 5400020,
+        "bytes_per_second": 1000
+      },
+      {
+        "id": "VIBRO",
+        "rate_hz": 100,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 540001,
+        "total_bytes": 10800020,
+        "bytes_per_second": 2000
+      },
+      {
+        "id": "TEMP_IMU",
+        "rate_hz": 1,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 5401,
+        "total_bytes": 108020,
+        "bytes_per_second": 20
+      },
+      {
+        "id": "MAG2",
+        "rate_hz": 50,
+        "components": 3,
+        "payload_bytes": 12,
+        "packet_bytes": 28,
+        "sample_count": 270001,
+        "total_bytes": 7560028,
+        "bytes_per_second": 1400
+      },
+      {
+        "id": "GNSS_VEL",
+        "rate_hz": 20,
+        "components": 3,
+        "payload_bytes": 12,
+        "packet_bytes": 28,
+        "sample_count": 108001,
+        "total_bytes": 3024028,
+        "bytes_per_second": 560
+      },
+      {
+        "id": "BARO_ALT",
+        "rate_hz": 25,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 135001,
+        "total_bytes": 2700020,
+        "bytes_per_second": 500
+      },
+      {
+        "id": "STATE",
+        "rate_hz": 20.0,
+        "components": 16,
+        "payload_bytes": 64,
+        "packet_bytes": 80,
+        "sample_count": 108001,
+        "total_bytes": 8640080,
+        "bytes_per_second": 1600.0
+      }
+    ],
+    "bytes_per_second": 31920.0,
+    "binary_bytes": 172368648,
+    "binary_mib": 164.38355255126953,
+    "reserved_mib": 213.6986183166504,
+    "margin": 1.3,
+    "duration_s": 5400
+  },
+  "memory_5_hours": {
+    "streams": [
+      {
+        "id": "IMU1",
+        "rate_hz": 200,
+        "components": 6,
+        "payload_bytes": 24,
+        "packet_bytes": 40,
+        "sample_count": 3600001,
+        "total_bytes": 144000040,
+        "bytes_per_second": 8000
+      },
+      {
+        "id": "IMU2",
+        "rate_hz": 200,
+        "components": 6,
+        "payload_bytes": 24,
+        "packet_bytes": 40,
+        "sample_count": 3600001,
+        "total_bytes": 144000040,
+        "bytes_per_second": 8000
+      },
+      {
+        "id": "GNSS1",
+        "rate_hz": 20,
+        "components": 3,
+        "payload_bytes": 12,
+        "packet_bytes": 28,
+        "sample_count": 360001,
+        "total_bytes": 10080028,
+        "bytes_per_second": 560
+      },
+      {
+        "id": "GNSS2",
+        "rate_hz": 20,
+        "components": 3,
+        "payload_bytes": 12,
+        "packet_bytes": 28,
+        "sample_count": 360001,
+        "total_bytes": 10080028,
+        "bytes_per_second": 560
+      },
+      {
+        "id": "BARO1",
+        "rate_hz": 25,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 450001,
+        "total_bytes": 9000020,
+        "bytes_per_second": 500
+      },
+      {
+        "id": "BARO2",
+        "rate_hz": 25,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 450001,
+        "total_bytes": 9000020,
+        "bytes_per_second": 500
+      },
+      {
+        "id": "MAG1",
+        "rate_hz": 50,
+        "components": 3,
+        "payload_bytes": 12,
+        "packet_bytes": 28,
+        "sample_count": 900001,
+        "total_bytes": 25200028,
+        "bytes_per_second": 1400
+      },
+      {
+        "id": "LIDAR_DOWN",
+        "rate_hz": 50,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 900001,
+        "total_bytes": 18000020,
+        "bytes_per_second": 1000
+      },
+      {
+        "id": "LIDAR_FRONT",
+        "rate_hz": 50,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 900001,
+        "total_bytes": 18000020,
+        "bytes_per_second": 1000
+      },
+      {
+        "id": "RPM",
+        "rate_hz": 50,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 900001,
+        "total_bytes": 18000020,
+        "bytes_per_second": 1000
+      },
+      {
+        "id": "PWR",
+        "rate_hz": 10,
+        "components": 3,
+        "payload_bytes": 12,
+        "packet_bytes": 28,
+        "sample_count": 180001,
+        "total_bytes": 5040028,
+        "bytes_per_second": 280
+      },
+      {
+        "id": "ADC_BATT",
+        "rate_hz": 10,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 180001,
+        "total_bytes": 3600020,
+        "bytes_per_second": 200
+      },
+      {
+        "id": "TEMP_BATT",
+        "rate_hz": 1,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 18001,
+        "total_bytes": 360020,
+        "bytes_per_second": 20
+      },
+      {
+        "id": "CURRENT_MOTOR",
+        "rate_hz": 50,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 900001,
+        "total_bytes": 18000020,
+        "bytes_per_second": 1000
+      },
+      {
+        "id": "VOLTAGE_BUS",
+        "rate_hz": 10,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 180001,
+        "total_bytes": 3600020,
+        "bytes_per_second": 200
+      },
+      {
+        "id": "FUEL_FLOW",
+        "rate_hz": 10,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 180001,
+        "total_bytes": 3600020,
+        "bytes_per_second": 200
+      },
+      {
+        "id": "SOC_EST",
+        "rate_hz": 1,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 18001,
+        "total_bytes": 360020,
+        "bytes_per_second": 20
+      },
+      {
+        "id": "AIRSPEED",
+        "rate_hz": 20,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 360001,
+        "total_bytes": 7200020,
+        "bytes_per_second": 400
+      },
+      {
+        "id": "RADAR_ALT",
+        "rate_hz": 50,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 900001,
+        "total_bytes": 18000020,
+        "bytes_per_second": 1000
+      },
+      {
+        "id": "VIBRO",
+        "rate_hz": 100,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 1800001,
+        "total_bytes": 36000020,
+        "bytes_per_second": 2000
+      },
+      {
+        "id": "TEMP_IMU",
+        "rate_hz": 1,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 18001,
+        "total_bytes": 360020,
+        "bytes_per_second": 20
+      },
+      {
+        "id": "MAG2",
+        "rate_hz": 50,
+        "components": 3,
+        "payload_bytes": 12,
+        "packet_bytes": 28,
+        "sample_count": 900001,
+        "total_bytes": 25200028,
+        "bytes_per_second": 1400
+      },
+      {
+        "id": "GNSS_VEL",
+        "rate_hz": 20,
+        "components": 3,
+        "payload_bytes": 12,
+        "packet_bytes": 28,
+        "sample_count": 360001,
+        "total_bytes": 10080028,
+        "bytes_per_second": 560
+      },
+      {
+        "id": "BARO_ALT",
+        "rate_hz": 25,
+        "components": 1,
+        "payload_bytes": 4,
+        "packet_bytes": 20,
+        "sample_count": 450001,
+        "total_bytes": 9000020,
+        "bytes_per_second": 500
+      },
+      {
+        "id": "STATE",
+        "rate_hz": 20.0,
+        "components": 16,
+        "payload_bytes": 64,
+        "packet_bytes": 80,
+        "sample_count": 360001,
+        "total_bytes": 28800080,
+        "bytes_per_second": 1600.0
+      }
+    ],
+    "bytes_per_second": 31920.0,
+    "binary_bytes": 574560648,
+    "binary_mib": 547.943733215332,
+    "reserved_mib": 712.3268531799316,
+    "margin": 1.3,
+    "duration_s": 18000
+  },
+  "navigation": null,
+  "checks": {
+    "seven_obstacles": true,
+    "detour_percentages": true,
+    "vertical_half_height": true,
+    "no_collision": true,
+    "canopy_clearance": true,
+    "fuel_reserve_3_percent": false,
+    "engine_power": true,
+    "battery_remaining": true,
+    "bank_limit": true,
+    "climb_limit": true,
+    "ceiling": true,
+    "monotonic_time": true,
+    "all_24_channels": true
+  },
+  "passed": false,
+  "sensors": [
+    {
+      "id": "IMU1",
+      "rate_hz": 200,
+      "samples": 267034,
+      "units": [
+        "m/s2",
+        "m/s2",
+        "m/s2",
+        "rad/s",
+        "rad/s",
+        "rad/s"
+      ],
+      "invalid": 0
+    },
+    {
+      "id": "IMU2",
+      "rate_hz": 200,
+      "samples": 267034,
+      "units": [
+        "m/s2",
+        "m/s2",
+        "m/s2",
+        "rad/s",
+        "rad/s",
+        "rad/s"
+      ],
+      "invalid": 0
+    },
+    {
+      "id": "GNSS1",
+      "rate_hz": 20,
+      "samples": 26704,
+      "units": [
+        "m",
+        "m",
+        "m"
+      ],
+      "invalid": 1200
+    },
+    {
+      "id": "GNSS2",
+      "rate_hz": 20,
+      "samples": 26704,
+      "units": [
+        "m",
+        "m",
+        "m"
+      ],
+      "invalid": 1200
+    },
+    {
+      "id": "BARO1",
+      "rate_hz": 25,
+      "samples": 33380,
+      "units": [
+        "Pa"
+      ],
+      "invalid": 0
+    },
+    {
+      "id": "BARO2",
+      "rate_hz": 25,
+      "samples": 33380,
+      "units": [
+        "Pa"
+      ],
+      "invalid": 0
+    },
+    {
+      "id": "MAG1",
+      "rate_hz": 50,
+      "samples": 66759,
+      "units": [
+        "uT",
+        "uT",
+        "uT"
+      ],
+      "invalid": 0
+    },
+    {
+      "id": "LIDAR_DOWN",
+      "rate_hz": 50,
+      "samples": 66759,
+      "units": [
+        "m"
+      ],
+      "invalid": 0
+    },
+    {
+      "id": "LIDAR_FRONT",
+      "rate_hz": 50,
+      "samples": 66759,
+      "units": [
+        "m"
+      ],
+      "invalid": 66759
+    },
+    {
+      "id": "RPM",
+      "rate_hz": 50,
+      "samples": 66759,
+      "units": [
+        "rpm"
+      ],
+      "invalid": 0
+    },
+    {
+      "id": "PWR",
+      "rate_hz": 10,
+      "samples": 13352,
+      "units": [
+        "W",
+        "V",
+        "A"
+      ],
+      "invalid": 0
+    },
+    {
+      "id": "ADC_BATT",
+      "rate_hz": 10,
+      "samples": 13352,
+      "units": [
+        "count"
+      ],
+      "invalid": 0
+    },
+    {
+      "id": "TEMP_BATT",
+      "rate_hz": 1,
+      "samples": 1336,
+      "units": [
+        "degC"
+      ],
+      "invalid": 0
+    },
+    {
+      "id": "CURRENT_MOTOR",
+      "rate_hz": 50,
+      "samples": 66759,
+      "units": [
+        "A"
+      ],
+      "invalid": 0
+    },
+    {
+      "id": "VOLTAGE_BUS",
+      "rate_hz": 10,
+      "samples": 13352,
+      "units": [
+        "V"
+      ],
+      "invalid": 0
+    },
+    {
+      "id": "FUEL_FLOW",
+      "rate_hz": 10,
+      "samples": 13352,
+      "units": [
+        "kg/s"
+      ],
+      "invalid": 0
+    },
+    {
+      "id": "SOC_EST",
+      "rate_hz": 1,
+      "samples": 1336,
+      "units": [
+        "fraction"
+      ],
+      "invalid": 0
+    },
+    {
+      "id": "AIRSPEED",
+      "rate_hz": 20,
+      "samples": 26704,
+      "units": [
+        "m/s"
+      ],
+      "invalid": 0
+    },
+    {
+      "id": "RADAR_ALT",
+      "rate_hz": 50,
+      "samples": 66759,
+      "units": [
+        "m"
+      ],
+      "invalid": 0
+    },
+    {
+      "id": "VIBRO",
+      "rate_hz": 100,
+      "samples": 133517,
+      "units": [
+        "g_rms"
+      ],
+      "invalid": 0
+    },
+    {
+      "id": "TEMP_IMU",
+      "rate_hz": 1,
+      "samples": 1336,
+      "units": [
+        "degC"
+      ],
+      "invalid": 0
+    },
+    {
+      "id": "MAG2",
+      "rate_hz": 50,
+      "samples": 66759,
+      "units": [
+        "uT",
+        "uT",
+        "uT"
+      ],
+      "invalid": 0
+    },
+    {
+      "id": "GNSS_VEL",
+      "rate_hz": 20,
+      "samples": 26704,
+      "units": [
+        "m/s",
+        "m/s",
+        "m/s"
+      ],
+      "invalid": 1202
+    },
+    {
+      "id": "BARO_ALT",
+      "rate_hz": 25,
+      "samples": 33380,
+      "units": [
+        "m"
+      ],
+      "invalid": 0
+    }
+  ]
+}
