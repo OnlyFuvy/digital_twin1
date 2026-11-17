@@ -23,7 +23,7 @@ def main():
         if name=='gnss_dropout':
             fig=create_dashboard(r,s,rep)
             fig._twin_controls[0].set_val(325)
-            fig.savefig(out/'figures/dashboard.png',dpi=150);plt.close(fig)
+            fig.savefig(out/'figures/dashboard_2d.png',dpi=150);plt.close(fig)
         row=dict(scenario=name,duration_s=rep['energy']['total_duration_s'],fuel_final_kg=rep['energy']['final_fuel_kg'],
                  peak_power_kw=rep['energy']['peak_power_kw'],passed=rep['passed'],failed_checks=';'.join(k for k,v in rep['checks'].items() if not v),
                  navigation_rmse_m=rep['navigation']['rmse_m'] if n else '',outage_peak_m=rep['navigation']['outage_peak_m'] if n else '')

@@ -1,11 +1,7 @@
 """Publication figures generated from actual numerical results."""
 from pathlib import Path
-import numpy as np
-import matplotlib
 from matplotlib import pyplot as plt
-from matplotlib.patches import Circle,Rectangle
-from matplotlib.transforms import Bbox
-from .route import terrain
+from matplotlib.patches import Circle
 
 NAVY='#17334b';TEAL='#087f8c';ORANGE='#e2853b';RED='#b84c4c'
 
@@ -27,32 +23,12 @@ def route_map(ax,r):
     ax.set_aspect('equal',adjustable='datalim');ax.legend(loc='lower left',fontsize=9)
 
 
-def draw_3d(ax,r):
-    xx=np.linspace(0,r['x'][-1],90);yy=np.linspace(min(r['y'])-600,max(r['y'])+600,42)
-    X,Y=np.meshgrid(xx,yy);Z=terrain(X,Y)
-    ax.plot_surface(X/1000,Y/1000,Z,cmap='gist_earth',alpha=.65,linewidth=0,antialiased=True)
-    ax.plot(r['x']/1000,r['y']/1000,r['z'],color=TEAL,lw=2.4)
-    for o in r['obstacles']:
-        color=RED if o['type']=='no_fly' else ORANGE
-        ax.scatter(o['x_m']/1000,o['y_m']/1000,terrain(o['x_m'],o['y_m'])+o['height_m'],s=30,color=color)
-        ax.text(o['x_m']/1000,o['y_m']/1000,terrain(o['x_m'],o['y_m'])+o['height_m']+14,str(o['id']),size=10)
-    ax.set(xlabel='X, км',ylabel='Y, км',zlabel='AMSL, м');ax.view_init(28,-64)
-    ax.set_xticks([0,5,10,15,20]);ax.set_yticks([-1,1,3]);ax.set_zticks([100,180,260])
-    ax.tick_params(labelsize=9,pad=1)
-    ax.xaxis.labelpad=10;ax.yaxis.labelpad=8;ax.zaxis.labelpad=8
-    ax.set_box_aspect((3,1,.65))
-
-
 def save_figures(r,streams,nav,report,out):
     style();out=Path(out);out.mkdir(parents=True,exist_ok=True)
     paths={}
     def save(fig,name):
         fig.savefig(out/f'{name}.png',bbox_inches='tight');plt.close(fig);paths[name]=str(out/f'{name}.png')
     fig,ax=plt.subplots(figsize=(12,5));route_map(ax,r);fig.tight_layout();save(fig,'route_map')
-    fig=plt.figure(figsize=(12,4.6));ax=fig.add_axes([0,0,1,1],projection='3d');draw_3d(ax,r)
-    ax.set_box_aspect((3,1,.65),zoom=1.25)
-    fig.savefig(out/'terrain_3d.png',bbox_inches=Bbox.from_extents(2,0,10.5,4.6));plt.close(fig)
-    paths['terrain_3d']=str(out/'terrain_3d.png')
     fig,axes=plt.subplots(2,1,figsize=(12,7),sharex=True)
     km=r['s']/1000
     axes[0].fill_between(km,r['terrain'],color='#c9d6c5',label='Рельеф')
