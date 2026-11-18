@@ -1,4 +1,4 @@
-"""End-to-end simulation and traceable requirement checks."""
+"""Полный цикл моделирования и проверки требований задания."""
 import json
 from pathlib import Path
 import numpy as np
@@ -58,7 +58,7 @@ def simulate(c,output=None,with_navigation=True,record=False):
         if nav:
             stride=int(c['sensors']['imu_hz']/10)
             np.savetxt(output/'navigation.csv',np.column_stack([nav['t'][::stride],nav['error'][::stride],nav['pure_error'][::stride]]),delimiter=',',header='t_s,fused_error_m,pure_ins_error_m',comments='',fmt='%.6f')
-        # Compact evidence at exactly 5 s for all channels, not a second raw recording.
+        # Прореженные отсчёты через 5 с; полная запись сохраняется отдельно.
         rows=[]
         for sid,s in streams.items():
             for i in np.arange(0,len(s['t']),max(1,int(5*s['rate_hz']))):

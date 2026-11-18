@@ -1,2 +1,2 @@
-"""Educational rotorcraft digital twin. SI units, ENU/FLU coordinates."""
+"""Учебный цифровой двойник вертолётного БПЛА. Единицы СИ, оси ENU/FLU."""
 __version__ = "1.0.0"

@@ -38,7 +38,7 @@
     "empty_mass_kg": 260.0,
     "payload_kg": 100.0,
     "battery_mass_kg": 8.0,
-    "fuel_kg": 60.0,
+    "fuel_kg": 10.0,
     "max_mass_kg": 450.0,
     "cruise_ms": 33.333333333333336,
     "max_climb_ms": 3.0,
@@ -67,6 +67,8 @@
   "energy": {
     "reserve_fraction": 0.03,
     "bsfc_kg_kwh": 0.32,
+    "fuel_density_kg_l": 0.75,
+    "tank_capacity_l": null,
     "profile_power_kw": 10.0,
     "drag_area_m2": 1.2,
     "transmission_efficiency": 0.88,

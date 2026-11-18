@@ -11,7 +11,7 @@ results/*/telemetry/*.bin
 *.blend
 docs/rendered/
 
-# Only reference traces and comparison summaries are versioned.
+# В Git сохраняются контрольные трассы и сводные результаты сравнений.
 results/nominal/figures/
 results/low_fuel/figures/
 results/strong_wind/figures/

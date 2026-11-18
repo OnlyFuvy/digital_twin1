@@ -1,4 +1,4 @@
-"""Publication figures generated from actual numerical results."""
+"""Построение графиков по результатам численного расчёта."""
 from pathlib import Path
 from matplotlib import pyplot as plt
 from matplotlib.patches import Circle
@@ -41,7 +41,9 @@ def save_figures(r,streams,nav,report,out):
     fig,axes=plt.subplots(2,1,figsize=(11,6),sharex=True);minutes=r['t']/60
     axes[0].plot(minutes,r['fuel_kg'],color=TEAL,lw=2,label='Топливо на маршрутном участке')
     axes[0].axhline(report['energy']['reserve_kg'],color=RED,ls='--',label='Резерв 3% начального топлива')
-    axes[0].set(ylabel='Топливо, кг',title='Топливо ДВС и потребная мощность');axes[0].legend(fontsize=9)
+    e=report['energy']
+    axes[0].set(ylabel='Топливо, кг',title=f"Заправка {e['initial_fuel_kg']:.2f} кг; после посадки {e['final_fuel_kg']:.2f} кг")
+    axes[0].legend(fontsize=9)
     axes[1].plot(minutes,r['power_kw'],color=ORANGE,lw=2,label='Потребная мощность')
     axes[1].axhline(report['energy']['max_power_kw'],color=RED,ls='--',label='Допущение о пределе двигателя')
     axes[1].set(xlabel='Время маршрутного участка, мин',ylabel='Мощность, кВт');axes[1].legend(fontsize=9)

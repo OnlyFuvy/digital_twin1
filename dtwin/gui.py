@@ -1,4 +1,4 @@
-"""Offline 2D player showing every dashboard signal at once."""
+"""Автономный двумерный проигрыватель с одновременным показом всех графиков."""
 import json
 
 import numpy as np
@@ -22,8 +22,15 @@ def create_dashboard(r, streams, report):
     fig.canvas.manager.set_window_title('ВТ-440 | Цифровой двойник')
     fig.text(.055, .95, 'ВТ-440  /  ЦИФРОВОЙ ДВОЙНИК',
              fontsize=23, weight='bold', color=NAVY)
-    fig.text(.055, .91, 'Маршрут и все графики отображаются одновременно',
-             fontsize=12, color='#647583')
+    energy=report.get('energy')
+    summary='Маршрут и все графики отображаются одновременно'
+    if energy:
+        summary=(f"Заправка {energy['initial_fuel_kg']:.2f} кг · "
+                 f"потребность {energy['fuel_required_kg']:.2f} кг · "
+                 f"после посадки {energy['final_fuel_kg']:.2f} кг · "
+                 f"резерв ≥{energy['reserve_kg']:.2f} кг")
+        if not report.get('passed',True):summary+=' · ПЛАН ОТКЛОНЁН'
+    fig.text(.055, .91, summary, fontsize=12, color='#647583')
     grid = fig.add_gridspec(3, 4, left=.065, right=.95, bottom=.20, top=.84,
                            wspace=.95, hspace=1.05, height_ratios=[1.15, 1, 1])
 
@@ -126,7 +133,7 @@ def create_dashboard(r, streams, report):
     fig.canvas.mpl_connect('close_event', lambda _: timer.stop())
     fig.text(.70, .035, 'Воспроизведение ×30   ·   шаг 0,1 с',
              fontsize=10, color='#647583')
-    # Keep controls alive for Matplotlib and expose the timeline to export scripts.
+    # Сохраняем элементы управления и даём скриптам доступ к шкале времени.
     fig._twin_controls = (slider, button, reset, timer, update)
     fig._twin_axes = dict(route=route, profile=profile, fuel=fuel,
                           signals=signal_axes)
@@ -134,12 +141,13 @@ def create_dashboard(r, streams, report):
     return fig
 
 
-def launch(c, out):
+def launch(c, out, with_navigation=True, record=False):
     from .simulation import simulate
     print('Расчёт модели. Обычно требуется до минуты…')
-    r, s, n, report = simulate(c, out, True, False)
+    r, s, n, report = simulate(c, out, with_navigation, record)
     create_dashboard(r, s, report)
     plt.show()
+    return report
 
 
 def replay(directory):

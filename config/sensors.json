@@ -267,5 +267,5 @@
       "kind": "derived"
     }
   ],
-  "axes": "Body FLU: X forward, Y left, Z up. World ENU: X east, Y north, Z up."
+  "axes": "Корпус FLU: X вперёд, Y влево, Z вверх. Мир ENU: X на восток, Y на север, Z вверх."
 }

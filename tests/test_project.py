@@ -1,4 +1,4 @@
-"""Numerical and end-to-end acceptance tests (stdlib unittest)."""
+"""Численные и интеграционные проверки средствами стандартного unittest."""
 import copy
 import tempfile
 import unittest

@@ -1,0 +1,136 @@
+{
+  "python": "3.12.14",
+  "backend": "Agg",
+  "checks": [
+    {
+      "name": "nominal_record",
+      "command": "python -m dtwin simulate --no-navigation --output results/run/program_check/nominal_record --record",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "passed": true,
+      "failed_checks": [],
+      "verified_binary_bytes": 42618936
+    },
+    {
+      "name": "low_fuel",
+      "command": "python -m dtwin simulate --no-navigation --output results/run/program_check/low_fuel --scenario low_fuel",
+      "expected_exit_code": 2,
+      "actual_exit_code": 2,
+      "passed": true,
+      "failed_checks": [
+        "fuel_reserve_3_percent"
+      ]
+    },
+    {
+      "name": "strong_wind",
+      "command": "python -m dtwin simulate --no-navigation --output results/run/program_check/strong_wind --scenario strong_wind",
+      "expected_exit_code": 2,
+      "actual_exit_code": 2,
+      "passed": true,
+      "failed_checks": [
+        "engine_power"
+      ]
+    },
+    {
+      "name": "fuel_60",
+      "command": "python -m dtwin simulate --no-navigation --output results/run/program_check/fuel_60 --fuel-kg 60",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "passed": true,
+      "failed_checks": []
+    },
+    {
+      "name": "root_entry",
+      "command": "python main.py simulate --no-navigation --output results/run/program_check/root_entry",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "passed": true,
+      "failed_checks": []
+    },
+    {
+      "name": "legacy_entry",
+      "command": "python src/main.py simulate --no-navigation --output results/run/program_check/legacy_entry",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "passed": true,
+      "failed_checks": []
+    },
+    {
+      "name": "gui_nominal",
+      "command": "python -m dtwin gui --no-navigation --output results/run/program_check/gui_nominal",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "passed": true,
+      "failed_checks": []
+    },
+    {
+      "name": "gui_stress_record",
+      "command": "python -m dtwin gui --no-navigation --output results/run/program_check/gui_stress_record --scenario strong_wind --record",
+      "expected_exit_code": 2,
+      "actual_exit_code": 2,
+      "passed": true,
+      "failed_checks": [
+        "engine_power"
+      ],
+      "verified_binary_bytes": 42618936
+    },
+    {
+      "name": "help",
+      "command": "python -m dtwin --help",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "replay",
+      "command": "python -m dtwin replay results/reference",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "memory_5_hours",
+      "command": "python -m dtwin memory --hours 5",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "passed": true,
+      "binary_bytes": 574560648
+    },
+    {
+      "name": "invalid_duration",
+      "command": "python -m dtwin memory --hours -1",
+      "expected_exit_code": 2,
+      "actual_exit_code": 2,
+      "passed": true
+    },
+    {
+      "name": "invalid_fuel",
+      "command": "python -m dtwin simulate --fuel-kg -1",
+      "expected_exit_code": 2,
+      "actual_exit_code": 2,
+      "passed": true
+    },
+    {
+      "name": "nan_fuel",
+      "command": "python -m dtwin simulate --fuel-kg nan",
+      "expected_exit_code": 2,
+      "actual_exit_code": 2,
+      "passed": true
+    },
+    {
+      "name": "overweight",
+      "command": "python -m dtwin simulate --fuel-kg 1000",
+      "expected_exit_code": 2,
+      "actual_exit_code": 2,
+      "passed": true
+    },
+    {
+      "name": "tank_overflow",
+      "command": "python -m dtwin simulate --config results/run/program_check/small_tank.json",
+      "expected_exit_code": 2,
+      "actual_exit_code": 2,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

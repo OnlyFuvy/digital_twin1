@@ -1,4 +1,4 @@
-"""Configuration loading and fail-fast validation."""
+"""Загрузка конфигурации и проверка параметров до запуска расчёта."""
 import copy
 import json
 import math
@@ -14,6 +14,7 @@ def load_config(path=None):
 
 
 def load_sensors(c=None):
+    """Повысить частоты GNSS и дальномеров при росте скорости аппарата."""
     specs=json.loads((ROOT / 'config/sensors.json').read_text(encoding='utf-8'))['sensors']
     if c is not None:
         for s in specs:
@@ -54,6 +55,17 @@ def validate(c):
         raise ValueError('Некорректный запас топлива или SOC')
     for key in ('bsfc_kg_kwh','battery_wh','transmission_efficiency'):
         if e[key] <= 0: raise ValueError(f'energy.{key} должен быть положительным')
+    if not 0 < e['transmission_efficiency'] <= 1:
+        raise ValueError('КПД трансмиссии должен находиться в интервале (0; 1]')
+    density=e.get('fuel_density_kg_l',.75)
+    if not isinstance(density,(int,float)) or density<=0:
+        raise ValueError('Плотность топлива должна быть положительным числом')
+    capacity=e.get('tank_capacity_l')
+    if capacity is not None:
+        if not isinstance(capacity,(int,float)) or capacity<=0:
+            raise ValueError('Объём бака должен быть положительным числом или null, если неизвестен')
+        if v['fuel_kg']/density>capacity:
+            raise ValueError('Заправка превышает указанный объём топливного бака')
     if c['sensors']['imu_hz'] < 100: raise ValueError('Частота IMU должна быть не менее 100 Гц')
     if c['sensors']['dropout_end_s'] < c['sensors']['dropout_start_s']:
         raise ValueError('Конец отказа GNSS раньше начала')

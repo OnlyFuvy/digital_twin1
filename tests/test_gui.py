@@ -62,6 +62,40 @@ class GuiTests(unittest.TestCase):
             ax = fig._twin_axes['signals'][sid]
             self.assertEqual(ax.texts[0].get_text(), 'Нет записанных данных')
 
+    def test_play_pause_reset_and_end_of_playback(self):
+        fig=create_dashboard(self.r,self.streams,{})
+        slider,button,reset,timer,_=fig._twin_controls
+        tick,args,kwargs=timer.callbacks[0]
+        tick(*args,**kwargs)
+        self.assertEqual(slider.val,0)
+        button._observers.process('clicked',None)
+        tick(*args,**kwargs)
+        self.assertEqual(slider.val,3)
+        button._observers.process('clicked',None)
+        tick(*args,**kwargs)
+        self.assertEqual(slider.val,3)
+        reset._observers.process('clicked',None)
+        tick(*args,**kwargs)
+        self.assertEqual(slider.val,0)
+        slider.set_val(slider.valmax-1)
+        button._observers.process('clicked',None)
+        tick(*args,**kwargs)
+        self.assertEqual(slider.val,slider.valmax)
+        slider.set_val(0)
+        tick(*args,**kwargs)
+        self.assertEqual(slider.val,0)
+
+    def test_summary_distinguishes_route_fuel_from_after_landing(self):
+        r=dict(self.r)
+        energy=integrate_energy(r,load_config())
+        fig=create_dashboard(r,self.streams,dict(energy=energy,passed=True))
+        summary=fig.texts[1].get_text()
+        self.assertIn(f"после посадки {energy['final_fuel_kg']:.2f} кг",summary)
+        self.assertIn('резерв ≥0.30 кг',summary)
+        fig.canvas.draw()
+        box=fig.texts[1].get_window_extent(fig.canvas.get_renderer())
+        self.assertLessEqual(box.x1,fig.bbox.width)
+
     def test_dashboard_text_stays_inside_window(self):
         fig = create_dashboard(self.r, self.streams, {})
         fig.canvas.draw()

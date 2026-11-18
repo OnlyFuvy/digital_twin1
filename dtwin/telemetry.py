@@ -1,14 +1,16 @@
-"""Deterministic binary stream format and exact sample-based memory budget."""
+"""Двоичная телеметрия и точный расчёт памяти по числу отсчётов."""
 import json
 from pathlib import Path
 import numpy as np
 
 
 def record_dtype(components):
+    # Заголовок 16 байт: время 8, номер 2, размерность 2, качество 4.
     return np.dtype([('t','<f8'),('channel','<u2'),('components','<u2'),('quality','<u4'),('values','<f4',(components,))])
 
 
 def memory_budget(duration,specs,c):
+    """Учесть каждый канал, поток STATE и отсчёт в начальный момент времени."""
     if duration<0 or not np.isfinite(duration):raise ValueError('Длительность должна быть конечной и неотрицательной')
     rows=[]
     for s in specs+[dict(id='STATE',rate_hz=c['telemetry']['state_hz'],components=c['telemetry']['state_components'],type='STATE')]:

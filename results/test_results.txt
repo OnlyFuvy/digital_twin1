@@ -1,4 +1,20 @@
-test_timeline_and_channel_callbacks (test_gui.GuiTests.test_timeline_and_channel_callbacks) ... ok
+Проверка 18 ноября 2026 года; Python 3.12.14; MPLBACKEND=Agg
+
+test_minimum_detects_insufficient_tank (test_energy.FuelTests.test_minimum_detects_insufficient_tank) ... ok
+test_minimum_is_a_boundary_and_does_not_change_inputs (test_energy.FuelTests.test_minimum_is_a_boundary_and_does_not_change_inputs) ... ok
+test_minimum_matches_independent_constant_power_solution (test_energy.FuelTests.test_minimum_matches_independent_constant_power_solution) ... ok
+test_required_fuel_matches_integrated_shaft_energy (test_energy.FuelTests.test_required_fuel_matches_integrated_shaft_energy) ... ok
+test_shortage_keeps_tank_and_mass_physical (test_energy.FuelTests.test_shortage_keeps_tank_and_mass_physical) ... ok
+test_tank_and_density_validation (test_energy.FuelTests.test_tank_and_density_validation) ... ok
+test_ten_kg_passes_fuel_in_both_winds_but_not_stress_power (test_energy.FuelTests.test_ten_kg_passes_fuel_in_both_winds_but_not_stress_power) ... ok
+test_unknown_tank_is_not_reported_as_verified (test_energy.FuelTests.test_unknown_tank_is_not_reported_as_verified) ... ok
+test_all_four_signals_are_visible_immediately (test_gui.GuiTests.test_all_four_signals_are_visible_immediately) ... ok
+test_dashboard_text_stays_inside_window (test_gui.GuiTests.test_dashboard_text_stays_inside_window) ... ok
+test_missing_signals_keep_their_panels (test_gui.GuiTests.test_missing_signals_keep_their_panels) ... ok
+test_play_pause_reset_and_end_of_playback (test_gui.GuiTests.test_play_pause_reset_and_end_of_playback) ... ok
+test_replay_loads_all_signals_and_handles_absent_samples (test_gui.GuiTests.test_replay_loads_all_signals_and_handles_absent_samples) ... ok
+test_summary_distinguishes_route_fuel_from_after_landing (test_gui.GuiTests.test_summary_distinguishes_route_fuel_from_after_landing) ... ok
+test_timeline_moves_map_and_every_chart (test_gui.GuiTests.test_timeline_moves_map_and_every_chart) ... ok
 test_constant_velocity_without_gnss (test_navigation.NavigationTests.test_constant_velocity_without_gnss) ... ok
 test_noise_is_reproducible (test_navigation.NavigationTests.test_noise_is_reproducible) ... ok
 test_sensor_rates_scale_with_speed (test_navigation.NavigationTests.test_sensor_rates_scale_with_speed) ... ok
@@ -25,6 +41,6 @@ test_trajectory_geometry_uses_absolute_altitude (test_project.MissionTests.test_
 test_vertical_half_current_height (test_project.MissionTests.test_vertical_half_current_height) ... ok
 
 ----------------------------------------------------------------------
-Ran 25 tests in 7.159s
+Ran 39 tests in 7.643s
 
 OK

@@ -1,4 +1,4 @@
-"""24 multirate channels with noise, body lever arms and explicit validity."""
+"""24 канала с разными частотами, шумами, плечами установки и признаками достоверности."""
 import numpy as np
 from .route import terrain, canopy
 
@@ -10,6 +10,7 @@ def interpolate(t, source_t, values):
 
 
 def rotations(euler):
+    """Матрицы поворота из связанных осей FLU в мировые оси ENU."""
     roll,pitch,yaw=np.asarray(euler).T
     cr,sr=np.cos(roll),np.sin(roll);cp,sp=np.cos(pitch),np.sin(pitch);cy,sy=np.cos(yaw),np.sin(yaw)
     out=np.empty((len(roll),3,3))
@@ -29,7 +30,7 @@ def body_rates(euler,t):
 def front_lidar(pos,direction,r,c):
     max_range=200.
     ranges=np.full(len(pos),max_range)
-    # Ray march against the synthetic surface, 2.5 m resolution.
+    # Проверка пересечения луча с синтетической поверхностью с шагом 2,5 м.
     for distance in np.arange(2.5,max_range+.1,2.5):
         q=pos+direction*distance
         hit=q[:,2] <= terrain(q[:,0],q[:,1])+canopy(q[:,0],q[:,1])
@@ -41,6 +42,7 @@ def front_lidar(pos,direction,r,c):
 
 
 def simulate_sensors(r,c,specs):
+    """Интерполировать состояние на частоты каналов и добавить погрешности."""
     streams={}; cfg=c['sensors']
     rt=r['t']; pos=np.column_stack([r[k] for k in ('x','y','z')])
     angular=body_rates(r['euler'],rt);angular_acc=np.gradient(angular,rt,axis=0,edge_order=2)
@@ -52,7 +54,7 @@ def simulate_sensors(r,c,specs):
         eul=interpolate(t,rt,r['euler']);R=rotations(eul)
         arm=np.array([spec[k] for k in ('x','y','z')]);offset=np.einsum('nij,j->ni',R,arm)
         p=interpolate(t,rt,pos)+offset
-        valid=np.zeros(len(t),dtype=np.uint32)  # 0=valid, 1=dropout, 2=out-of-range
+        valid=np.zeros(len(t),dtype=np.uint32)  # 0 — достоверно, 1 — потеря сигнала, 2 — вне диапазона
         def sample(key):return interpolate(t,rt,r[key])
         if sid.startswith('IMU'):
             omega=interpolate(t,rt,angular);alpha=interpolate(t,rt,angular_acc)
@@ -83,12 +85,12 @@ def simulate_sensors(r,c,specs):
         elif sid=='ADC_BATT':values=np.rint(np.clip(sample('voltage')/36,0,1)*4095);units=['count']
         elif sid=='TEMP_BATT':values=sample('temp_batt')+rng.normal(0,.2,len(t));units=['degC']
         elif sid=='CURRENT_MOTOR':
-            # Legacy identifier retained: actuator current, not ICE shaft current.
+            # Историческое имя канала: измеряется ток сервоприводов.
             values=(80+20*np.abs(eul[:,0]))/sample('voltage')+rng.normal(0,.02,len(t));units=['A']
         elif sid=='VOLTAGE_BUS':values=sample('voltage')+rng.normal(0,.02,len(t));units=['V']
         elif sid=='FUEL_FLOW':values=np.maximum(0,sample('fuel_flow_kgs')+rng.normal(0,.00001,len(t)));units=['kg/s']
         elif sid=='SOC_EST':
-            # Coulomb counter derived from the measured POWER current channel.
+            # Подсчёт заряда интегрированием тока из измерительного канала PWR.
             power=streams['PWR'];pt=power['t'];amps=power['values'][:,2]
             charge=np.r_[0,np.cumsum((amps[1:]+amps[:-1])/2*np.diff(pt))]
             values=np.clip(r['soc'][0]-np.interp(t,pt,charge)/(c['energy']['battery_wh']/28*3600),0,1);units=['fraction']

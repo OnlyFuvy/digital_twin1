@@ -1,4 +1,4 @@
-"""Smooth terrain-following prescribed trajectory, not a flight controller."""
+"""Построение гладкой заданной траектории с огибанием рельефа."""
 import numpy as np
 
 
@@ -9,7 +9,7 @@ def terrain(x, y):
 
 
 def canopy(x, y):
-    # Synthetic river corridors; tree crowns elsewhere, no real geodata.
+    # Синтетический речной коридор и лесной покров; реальные геоданные не используются.
     x, y = np.asarray(x), np.asarray(y)
     river = np.exp(-((x-12500)/230)**4)
     return (19 + 3*np.cos(x/900)*np.cos(y/700))*(1-river)
@@ -25,6 +25,7 @@ def length(points):
 
 
 def build_route(c):
+    """Подобрать амплитуды семи манёвров под заданные добавки длины пути."""
     r, env = c['route'], c['environment']
     L, w, h = r['baseline_m'], r['half_width_m'], r['agl_m']
     centers = np.arange(1,8)*L/8
@@ -50,8 +51,8 @@ def build_route(c):
         amp = (lo+hi)/2
         y[ix] = side*amp*b; agl[ix] = hh
         cy = side*amp if kind in ('over','bridge') else 0.
-        # Obstacles are explicit synthetic scenario objects, configured once
-        # after solving the prescribed manoeuvre geometry.
+        # Синтетические препятствия размещаются после расчёта
+        # геометрии предусмотренных заданием манёвров.
         obstacles.append(dict(id=i+1,type=kind,x_m=float(cx),y_m=float(cy),
             half_width_m=w,side=side,amplitude_m=amp,target_percent=pct,
             baseline_length_m=baseline,length_m=length(points(amp)),
@@ -64,20 +65,21 @@ def build_route(c):
 
 
 def time_parameterize(route,c):
+    """Ограничить скорость, затем вычислить время, ускорение и ориентацию."""
     p = np.column_stack([route[k] for k in ('x','y','z')])
     ds = np.linalg.norm(np.diff(p,axis=0),axis=1)
     s = np.r_[0,np.cumsum(ds)]
     tangent = np.gradient(p,s,axis=0,edge_order=2)
     curvature = np.linalg.norm(np.gradient(tangent,s,axis=0,edge_order=2),axis=1)
     vcfg = c['vehicle']
-    # 1% speed margin absorbs finite-difference curvature error on the grid.
+    # Запас скорости 1% компенсирует погрешность расчёта кривизны на сетке.
     limit = np.minimum(vcfg['cruise_ms'],.99*np.sqrt(9.80665*np.tan(np.deg2rad(vcfg['max_bank_deg']))/np.maximum(curvature,1e-9)))
     limit = np.minimum(limit,vcfg['max_climb_ms']/np.maximum(np.abs(tangent[:,2]),1e-9))
     for ob in route['obstacles']:
         mask = np.abs(route['x']-ob['x_m']) <= ob['half_width_m']
         limit[mask] = np.minimum(limit[mask],12. if ob['type']=='bridge' else 23.)
-    # The route is an airborne mission segment. Vertical takeoff/landing
-    # and their energy are separate holds in the energy model.
+    # Траектория описывает маршрутный участок. Взлёт и посадка
+    # учитываются отдельно как энергетическая надбавка.
     speed = limit.copy(); speed[0]=speed[-1]=5.
     a = vcfg['max_accel_ms2']
     for i in range(1,len(speed)): speed[i]=min(speed[i],np.sqrt(speed[i-1]**2+2*a*ds[i-1]))
@@ -95,6 +97,7 @@ def time_parameterize(route,c):
 
 
 def collision_checks(r,c):
+    """Проверить зазоры с учётом радиуса винта, корпуса, крон и проёма моста."""
     env,v=c['environment'],c['vehicle']; radius=v['rotor_radius_m']; half_h=v['body_half_height_m']
     checks=[]
     for ob in r['obstacles']:
