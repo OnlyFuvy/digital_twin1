@@ -37,7 +37,8 @@ class GuiTests(unittest.TestCase):
             stream = self.streams[sid]
             step = max(1, int(stream['rate_hz'] / 5))
             np.testing.assert_array_equal(
-                ax.lines[0].get_ydata(), stream['values'][::step, 0])
+                ax.lines[0].get_ydata(), np.where(stream['quality'][::step] == 0, stream['values'][::step, 0], np.nan)
+                * (3600 if sid == 'FUEL_FLOW' else 1))
 
     def test_timeline_moves_map_and_every_chart(self):
         fig = create_dashboard(self.r, self.streams, {})
@@ -128,8 +129,9 @@ class GuiTests(unittest.TestCase):
                     writer.writerows([[sid, 0, 0, 1], [sid, 5, 0, 2]])
             with patch('dtwin.gui.plt.show'):
                 replay(directory)
-                for ax in plt.gcf()._twin_axes['signals'].values():
-                    np.testing.assert_array_equal(ax.lines[0].get_ydata(), [1, 2])
+                for sid, ax in plt.gcf()._twin_axes['signals'].items():
+                    expected = [3600, 7200] if sid == 'FUEL_FLOW' else [1, 2]
+                    np.testing.assert_array_equal(ax.lines[0].get_ydata(), expected)
                 plt.close('all')
                 samples.unlink()
                 replay(directory)

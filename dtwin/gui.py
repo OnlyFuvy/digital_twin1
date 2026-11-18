@@ -7,13 +7,7 @@ from matplotlib.widgets import Slider, Button
 
 from .plots import style, route_map, NAVY, TEAL, ORANGE
 
-
-DASHBOARD_SIGNALS = (
-    ('IMU1', 'Ускорение X', 'м/с²'),
-    ('FUEL_FLOW', 'Расход топлива', 'кг/с'),
-    ('LIDAR_DOWN', 'Дальность до крон', 'м'),
-    ('TEMP_BATT', 'Температура батареи', '°C'),
-)
+from .plots import DASHBOARD_SIGNALS, signal_plot
 
 
 def create_dashboard(r, streams, report):
@@ -53,16 +47,17 @@ def create_dashboard(r, streams, report):
                                 label='Высота AGL')
     speed = profile.twinx()
     speed_line, = speed.plot(minutes, r['speed'] * 3.6, color=ORANGE,
-                             lw=1.2, label='Скорость')
+                             lw=1.2, label='Вдоль траектории')
     speed.grid(False)
     profile.set(xlabel='Время, мин', ylabel='Высота AGL, м',
-                title='Высота и скорость')
+                title='Маршрут после взлёта')
     speed.set_ylabel('Скорость, км/ч')
+    profile.set_ylim(0, 1.1 * max(r['agl']))
     profile.legend(handles=[height_line, speed_line], fontsize=8, loc='upper right')
 
     fuel = fig.add_subplot(grid[2, :2])
     fuel_line, = fuel.plot(minutes, r['fuel_kg'], color=TEAL, lw=1.6,
-                           label='Топливо')
+                           label='Остаток в баке')
     power = fuel.twinx()
     power_line, = power.plot(minutes, r['power_kw'], color=ORANGE,
                              lw=1.2, label='Мощность')
@@ -77,22 +72,15 @@ def create_dashboard(r, streams, report):
         ax = fig.add_subplot(grid[1 + index // 2, 2 + index % 2])
         signal_axes[sid] = ax
         stream = streams.get(sid)
-        if stream is not None and len(stream['t']):
-            step = max(1, int(stream['rate_hz'] / 5))
-            ax.plot(stream['t'][::step] / 60, stream['values'][::step, 0],
-                    color=TEAL, lw=.8)
-        else:
-            ax.text(.5, .5, 'Нет записанных данных', ha='center', va='center',
-                    fontsize=9, transform=ax.transAxes)
-        ax.set(xlabel='Время, мин', ylabel=unit)
-        ax.set_title(f'{sid} · {label}', fontsize=10)
+        signal_plot(ax, sid, stream, report.get('configuration', {}))
+        ax.set_title(ax.get_title(), fontsize=10)
         ax.tick_params(labelsize=8)
         cursors.append(ax.axvline(0, color=ORANGE, lw=1))
 
     for ax in (profile, fuel):
         ax.set_title(ax.get_title(), fontsize=12)
 
-    slider = Slider(fig.add_axes([.12, .085, .50, .025]), 'Полёт, с',
+    slider = Slider(fig.add_axes([.12, .085, .50, .025]), 'Маршрут, с',
                     0, float(r['t'][-1]), valinit=0, valfmt='%0.0f', color=TEAL)
     button = Button(fig.add_axes([.70, .075, .14, .045]), 'Пуск / пауза',
                     color='#dbe7ec', hovercolor='#bfd7df')
@@ -100,14 +88,17 @@ def create_dashboard(r, streams, report):
                    color='#dbe7ec', hovercolor='#bfd7df')
     active = [False]
 
+    vertical = np.gradient(r['z'], r['t'], edge_order=2 if len(minutes)>2 else 1) if len(minutes)>1 else np.zeros_like(minutes)
+
     def update(t):
         i = min(np.searchsorted(r['t'], t), len(r['t']) - 1)
         vehicle.set_data([r['x'][i] / 1000], [r['y'][i] / 1000])
         for cursor in cursors:
             cursor.set_xdata([t / 60, t / 60])
         info.set_text(
-            f"ВРЕМЯ       {t / 60:7.2f} мин\n"
-            f"СКОРОСТЬ    {r['speed'][i] * 3.6:7.1f} км/ч\n"
+            f"НА МАРШРУТЕ {t / 60:7.2f} мин\n"
+            f"ПО ПУТИ     {r['speed'][i] * 3.6:7.1f} км/ч\n"
+            f"ВЕРТИКАЛЬНО {vertical[i]:+7.2f} м/с\n"
             f"ВЫСОТА AGL  {r['agl'][i]:7.1f} м\n"
             f"ТОПЛИВО     {r['fuel_kg'][i]:7.2f} кг\n"
             f"МОЩНОСТЬ    {r['power_kw'][i]:7.2f} кВт")
@@ -169,6 +160,7 @@ def replay(directory):
             streams[sid] = dict(
                 t=np.array([float(z['t_s']) for z in selected]),
                 values=np.array([[float(z['v1'])] for z in selected]).reshape(-1, 1),
-                rate_hz=.2, units=[unit])
+                quality=np.array([int(z['quality']) for z in selected]),
+                rate_hz=.2, units=['kg/s' if sid=='FUEL_FLOW' else unit])
     create_dashboard(r, streams, report)
     plt.show()

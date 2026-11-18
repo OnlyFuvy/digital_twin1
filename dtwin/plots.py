@@ -1,5 +1,6 @@
 """Построение графиков по результатам численного расчёта."""
 from pathlib import Path
+import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.patches import Circle
 
@@ -23,22 +24,54 @@ def route_map(ax,r):
     ax.set_aspect('equal',adjustable='datalim');ax.legend(loc='lower left',fontsize=9)
 
 
+DASHBOARD_SIGNALS = (
+    ('IMU1', 'Удельная сила X корпуса', 'м/с²'),
+    ('FUEL_FLOW', 'Часовой расход', 'кг/ч'),
+    ('LIDAR_DOWN', 'Дальность по лучу до крон', 'м'),
+    ('TEMP_BATT', 'Температура батареи', '°C'),
+)
+
+
+def signal_plot(ax, sid, stream, configuration):
+    label, unit = next((label, unit) for key, label, unit in DASHBOARD_SIGNALS if key == sid)
+    if stream is not None and len(stream['t']):
+        step = max(1, int(stream['rate_hz'] / 5))
+        values = stream['values'][::step, 0]
+        if 'quality' in stream:
+            values = np.where(stream['quality'][::step] == 0, values, np.nan)
+        if sid == 'FUEL_FLOW':
+            values = values * 3600
+        ax.plot(stream['t'][::step] / 60, values, color=TEAL, lw=.8)
+    else:
+        ax.text(.5, .5, 'Нет записанных данных', ha='center', va='center',
+                fontsize=9, transform=ax.transAxes)
+    ambient = configuration.get('environment', {}).get('temperature_c')
+    if sid == 'TEMP_BATT' and ambient is not None:
+        label += f' (воздух {ambient:g} °C)'
+    ax.set(title=label, xlabel='Минуты от входа на маршрут', ylabel=unit)
+
+
 def save_figures(r,streams,nav,report,out):
     style();out=Path(out);out.mkdir(parents=True,exist_ok=True)
     paths={}
     def save(fig,name):
         fig.savefig(out/f'{name}.png',bbox_inches='tight');plt.close(fig);paths[name]=str(out/f'{name}.png')
     fig,ax=plt.subplots(figsize=(12,5));route_map(ax,r);fig.tight_layout();save(fig,'route_map')
-    fig,axes=plt.subplots(2,1,figsize=(12,7),sharex=True)
+    fig,axes=plt.subplots(4,1,figsize=(12,10),sharex=True)
     km=r['s']/1000
     axes[0].fill_between(km,r['terrain'],color='#c9d6c5',label='Рельеф')
     axes[0].plot(km,r['terrain']+r['canopy'],color='#527d4b',lw=1,label='Верхушки деревьев')
     axes[0].plot(km,r['z'],color=TEAL,lw=2,label='Абсолютная высота БПЛА')
-    axes[0].set(ylabel='AMSL, м',title='Огибание рельефа и три подъёма до 90 м AGL');axes[0].legend(ncol=3,fontsize=9)
-    axes[1].plot(km,r['agl'],color=TEAL,label='Высота AGL, м');axes[1].plot(km,r['speed']*3.6,color=ORANGE,label='Скорость, км/ч')
-    axes[1].set(xlabel='Пройденный путь, км',ylabel='Значение');axes[1].legend(ncol=2,fontsize=9)
+    axes[0].set(ylabel='AMSL, м',title='Высота на маршрутном участке после взлёта');axes[0].legend(ncol=3,fontsize=9)
+    axes[1].plot(km,r['agl'],color=TEAL)
+    axes[1].set(ylabel='Над землёй, м', ylim=(0,1.1*max(r['agl'])))
+    axes[2].plot(km,r['speed']*3.6,color=ORANGE)
+    axes[2].set(ylabel='По траектории, км/ч')
+    axes[3].plot(km,r['velocity'][:,2],color=NAVY)
+    axes[3].axhline(0,color='gray',lw=.6)
+    axes[3].set(xlabel='Путь от входа на маршрут, км',ylabel='По вертикали, м/с')
     fig.tight_layout();save(fig,'flight_profile')
-    fig,axes=plt.subplots(2,1,figsize=(11,6),sharex=True);minutes=r['t']/60
+    fig,axes=plt.subplots(3,1,figsize=(11,8),sharex=True);minutes=r['t']/60
     axes[0].plot(minutes,r['fuel_kg'],color=TEAL,lw=2,label='Топливо на маршрутном участке')
     axes[0].axhline(report['energy']['reserve_kg'],color=RED,ls='--',label='Резерв 3% начального топлива')
     e=report['energy']
@@ -47,6 +80,9 @@ def save_figures(r,streams,nav,report,out):
     axes[1].plot(minutes,r['power_kw'],color=ORANGE,lw=2,label='Потребная мощность')
     axes[1].axhline(report['energy']['max_power_kw'],color=RED,ls='--',label='Допущение о пределе двигателя')
     axes[1].set(xlabel='Время маршрутного участка, мин',ylabel='Мощность, кВт');axes[1].legend(fontsize=9)
+    axes[2].plot(minutes,r['fuel_flow_kgs']*3600,color=TEAL)
+    axes[2].set(xlabel='Минуты от входа на маршрут',ylabel='Расход по плану, кг/ч')
+    axes[1].set_xlabel('')
     fig.tight_layout();save(fig,'energy')
     if nav:
         fig,axes=plt.subplots(2,1,figsize=(11,6),sharex=True)
@@ -56,11 +92,12 @@ def save_figures(r,streams,nav,report,out):
             ax.set(ylabel='Ошибка позиции, м');ax.legend(fontsize=9)
             cfg=report['configuration']['sensors']
             if cfg['dropout_end_s']>cfg['dropout_start_s']:ax.axvspan(cfg['dropout_start_s']/60,cfg['dropout_end_s']/60,color=RED,alpha=.15)
-        axes[0].set_title('Рост ошибки при потере спутниковой коррекции');axes[1].set_xlabel('Время, мин')
+        axes[0].set_title('Ошибка положения относительно расчётной траектории');axes[1].set_xlabel('Время, мин')
         fig.tight_layout();save(fig,'navigation')
+    else:
+        (out/'navigation.png').unlink(missing_ok=True)
     fig,axes=plt.subplots(2,2,figsize=(12,6))
-    for ax,sid,col,label in zip(axes.flat,['IMU1','FUEL_FLOW','LIDAR_DOWN','TEMP_BATT'],[0,0,0,0],['Ускорение X, м/с²','Расход, кг/с','Дальность до крон, м','Температура батареи, °C']):
-        a=streams[sid];step=max(1,int(a['rate_hz']/5));ax.plot(a['t'][::step]/60,a['values'][::step,col],color=TEAL,lw=.8)
-        ax.set(title=sid,xlabel='Время, мин',ylabel=label)
+    for ax,(sid,_,_) in zip(axes.flat,DASHBOARD_SIGNALS):
+        signal_plot(ax,sid,streams[sid],report['configuration'])
     fig.tight_layout();save(fig,'sensor_signals')
     return paths
